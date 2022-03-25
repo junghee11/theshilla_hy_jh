@@ -53,10 +53,34 @@ public class ReservationController {
 		if(rsv_idx==null) {
 			mav.setViewName("redirection:/list");
 		} else {
-			mav.setViewName("redirection:/reservation_detail?rsv_idx");
+			mav.setViewName("redirection:/reservation_step2?rsv_idx="+rsv_idx);
 		}
 		
 		return mav;
 	}
-
+	
+	@RequestMapping(value="/reservation_step2", method = RequestMethod.GET)
+	public ModelAndView detail(@RequestParam Map<String, Object> map) {
+		Map<String, Object> detailMap = this.reservation.detail(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("data", detailMap);
+		String mem_id = map.get("mem_id").toString(); 
+		mav.addObject("mem_id", mem_id);
+		mav.setViewName("/reservation_step2");
+		return mav;
+	}
+	
+	//예약확인/취소 작성중
+	@RequestMapping(value="/rsvCheck", method = RequestMethod.GET)
+	public ModelAndView rsvCheck(@RequestParam Map<String, Object> map) {
+		Map<String, Object> detailMap = this.reservation.detail(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("data", detailMap);
+		String rsv_idx = map.get("rsv_idx").toString(); 
+		mav.addObject("rsv_idx", rsv_idx);
+		mav.setViewName("/rsvCheck");
+		return mav;
+	}
 }

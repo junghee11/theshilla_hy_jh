@@ -11,4 +11,6 @@ public interface Reservation {
 
 	List<Map<String, Object>> dateCheck(Map<String, Object> map);
 
+	Map<String, Object> detail(Map<String, Object> map);
+
 }

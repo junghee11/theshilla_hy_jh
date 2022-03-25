@@ -17,6 +17,10 @@ public class ReservationDao {
 		return this.sqlSessionTemplate.insert("reservation.insert_reservation", map);
 	}
 	
+	public Map<String, Object> selectDetail(Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectOne("reservation.rsv_detail");
+	}
+	
 	public List<Map<String, Object>> selectList(Map<String, Object> map) {
 		return this.sqlSessionTemplate.selectList("reservation.room_list", map);
 	}

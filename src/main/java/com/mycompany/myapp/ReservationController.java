@@ -24,7 +24,7 @@ public class ReservationController {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("data", list);
-		mav.setViewName("reservation/Reservation");
+		mav.setViewName("reservation/Reservation_step1");
 		return mav;
 	}
 	
@@ -40,34 +40,35 @@ public class ReservationController {
 		mav.addObject("date_in", date_in);
 		mav.addObject("date_out", date_out);
 
-		mav.setViewName("reservation/Reservation");
+		mav.setViewName("reservation/Reservation_step1");
 		return mav;
 	}
 	
-	@RequestMapping(value="insert_reservation", method=RequestMethod.POST)
+	@RequestMapping(value="select_room", method=RequestMethod.POST)
 	public ModelAndView createReservation(@RequestParam Map<String, Object> map) {
 		
 		ModelAndView mav = new ModelAndView();
 		
 		String rsv_idx = this.reservation.createReservation(map);
 		if(rsv_idx==null) {
-			mav.setViewName("redirection:/list");
+			mav.setViewName("redirect:/list");
 		} else {
-			mav.setViewName("redirection:/reservation_step2?rsv_idx="+rsv_idx);
+			mav.setViewName("redirect:/Reservation_step2?rsv_idx="+rsv_idx);
 		}
 		
 		return mav;
 	}
 	
-	@RequestMapping(value="/reservation_step2", method = RequestMethod.GET)
+	@RequestMapping(value="/Reservation_step2", method = RequestMethod.GET)
 	public ModelAndView detail(@RequestParam Map<String, Object> map) {
 		Map<String, Object> detailMap = this.reservation.detail(map);
+		System.out.println(map);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("data", detailMap);
-		String mem_id = map.get("mem_id").toString(); 
-		mav.addObject("mem_id", mem_id);
-		mav.setViewName("/reservation_step2");
+		String rsv_idx = map.get("rsv_idx").toString(); 
+		mav.addObject("mem_id", rsv_idx);
+		mav.setViewName("/reservation/Reservation_step2");
 		return mav;
 	}
 	

@@ -16,7 +16,7 @@ public class ReservationImpl implements Reservation {
 	public String createReservation(Map<String, Object> map) {
 		int affectRowCount = this.reservationDao.insert(map);
 		if(affectRowCount == 1) {
-			return map.get("mem_id").toString();
+			return map.get("rsv_idx").toString();
 		}
 		return null;
 	}

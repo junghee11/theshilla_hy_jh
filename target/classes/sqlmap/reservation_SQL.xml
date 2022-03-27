@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN " "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reservation">
 
-	<insert id="insert_reservation" parameterType="hashMap" useGeneratedKeys="true" keyProperty="rvs_idx">
+	<insert id="insert_reservation" parameterType="hashMap" useGeneratedKeys="true" keyProperty="rsv_idx">
 	<![CDATA[
-		insert into reservation(mem_id, room_no, date_in, date_out, cash) values(#{mem_id}, #{room_no}, #{date_in}, #{date_out}, #{price})
+		insert into reservation(mem_id, room_no, date_in, date_out, cash) values (#{mem_id}, #{room_no}, #{date_in}, #{date_out}, #{price})
 	]]>
 	</insert>
 	
 	<select id="rsv_detail" parameterType="hashMap" resultType="hashMap">
 	<![CDATA[
-		select mem_id, room_no, date_in, date_out, cash from reservation where rsv_idx = #{rsv_idx}
+		select rsv_idx, mem_id, room_no, date_in, date_out, cash from reservation where rsv_idx = #{rsv_idx}
 	]]>
 	</select>
 	
@@ -22,7 +22,8 @@
 	
 	<select id="checked_room" resultType="hashMap" parameterType="hashMap">
 	<![CDATA[
-		select ro.room_no, type, base_price, base_person, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where (#{date_in} not between date_in and date_out) and (#{date_out} not between date_in and date_out)
+		select * from room where room_no not in (select distinct ro.room_no from room ro join reservation rv on rv.room_no = ro.room_no 
+		where (date_in between #{date_in} and #{date_out}) or (date_out between #{date_in} and #{date_out}))
 	]]>
 	</select>
 <!-- 	<select id="DuplicateFind" resultType="int" parameterType="hashMap"> -->

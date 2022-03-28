@@ -26,6 +26,11 @@ public class ReservationImpl implements Reservation {
 		return this.reservationDao.selectDetail(map);
 	}
 	
+//	@Override
+//	public Map<String, Object> detail(String rsv) {
+//		return this.reservationDao.selectDetail(rsv);
+//	}
+	
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map){
 		return this.reservationDao.selectList(map);
@@ -34,6 +39,11 @@ public class ReservationImpl implements Reservation {
 	@Override
 	public List<Map<String, Object>> dateCheck(Map<String, Object> map) {
 		return this.reservationDao.duplicateCheck(map);
+	}
+	@Override
+	public boolean remove(Map<String, Object> map) {
+		int affectFowCount = this.reservationDao.delete(map);
+		return affectFowCount ==1;
 	}
 	
 }

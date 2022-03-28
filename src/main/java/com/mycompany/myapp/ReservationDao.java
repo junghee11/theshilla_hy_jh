@@ -21,11 +21,19 @@ public class ReservationDao {
 		return this.sqlSessionTemplate.selectOne("reservation.rsv_detail");
 	}
 	
+//	public Map<String, Object> selectDetail(String rs) {
+//		return this.sqlSessionTemplate.selectOne("reservation.rsv_detail");
+//	}
+	
 	public List<Map<String, Object>> selectList(Map<String, Object> map) {
 		return this.sqlSessionTemplate.selectList("reservation.room_list", map);
 	}
 	
 	public List<Map<String, Object>> duplicateCheck(Map<String, Object> map) {
 		return this.sqlSessionTemplate.selectList("reservation.checked_room", map);
+	}
+	
+	public int delete(Map<String, Object> map) {
+		return this.sqlSessionTemplate.delete("reservation.delete_rsv", map);
 	}
 }

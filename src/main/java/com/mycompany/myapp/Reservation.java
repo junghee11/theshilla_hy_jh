@@ -13,4 +13,8 @@ public interface Reservation {
 
 	Map<String, Object> detail(Map<String, Object> map);
 
+	boolean remove(Map<String, Object> map);
+
+//	Map<String, Object> detail(String rsv);
+
 }

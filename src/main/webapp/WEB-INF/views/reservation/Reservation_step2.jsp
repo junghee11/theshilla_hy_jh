@@ -10,12 +10,15 @@
 <body>
 	<h4>예약정보</h4>
 	<form name="myForm" method="post">
+		<input type="text" name="rsv_idx" value="${Rsv_idx}">
 		<div>
-			<img src="${data.imgLink}" alt="room" style="width:170px; height:100px;" />
-			<p>${data.type } </p>
-			<p>인원 ${data.person } 명</p>
-			<fmt:formatNumber type="number" maxFractionDigits="3" value="${data.base_price }" />
-			
+			<img src="${detail.imgLink}" alt="room" style="width:170px; height:100px;" />
+			<p>선택하신 옵션 : ${detail.type } </p>
+			<p>인원 : ${detail.base_person } 명</p>
+			<p>기간 : ${detail.date_in } ~ ${detail.date_out }</p>
+			<span>결제예정금액 : </span>><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.cash }" />
+			<br>
+			<p>결제여부 : ${detail.payment } </p>
 			<input type="button" onclick="mySubmit(1)" value="결제하기">
 			<input type="button" onclick="mySubmit(2)" value="취소하기">
 		</div>
@@ -23,10 +26,11 @@
 	<script>
 		function mySubmit(index){
 			if(index == 1){
-				document.myForm.action='/payCredit?rsv_idx='+${rsv_idx}
+				document.myForm.action="kakaoPay"
 			} else{
-				document.myForm.action='/cancelDeal?rsv_idx='+${rsv_idx}
+				document.myForm.action="cancelDeal"
 			}
+			document.myForm.submit()
 		}
 	</script>
 	<h4>결제정보</h4>

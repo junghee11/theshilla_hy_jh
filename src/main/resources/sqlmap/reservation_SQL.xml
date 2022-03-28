@@ -10,7 +10,7 @@
 	
 	<select id="rsv_detail" parameterType="hashMap" resultType="hashMap">
 	<![CDATA[
-		select rsv_idx, mem_id, room_no, date_in, date_out, cash from reservation where rsv_idx = #{rsv_idx}
+		select mem_id, date_in, date_out, base_person, cash, payment, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where rsv_idx = #{Rsv_idx}
 	]]>
 	</select>
 	
@@ -26,6 +26,12 @@
 		where (date_in between #{date_in} and #{date_out}) or (date_out between #{date_in} and #{date_out}))
 	]]>
 	</select>
+	
+	<delete id="delete_rsv" parameterType="hashMap">
+	<![CDATA[
+		delete from reservation where rsv_idx = #{rsv_idx}
+	]]>
+	</delete>
 <!-- 	<select id="DuplicateFind" resultType="int" parameterType="hashMap"> -->
 <!-- 	<![CDATA[ -->
 <!-- 		select count(*) from reservation where room_no = #{room_no} and (#{date_in} between date_in and date_out) or (#{date_out} between date_in and date_out); -->

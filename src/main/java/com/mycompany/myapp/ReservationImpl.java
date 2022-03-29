@@ -26,11 +26,6 @@ public class ReservationImpl implements Reservation {
 		return this.reservationDao.selectDetail(map);
 	}
 	
-//	@Override
-//	public Map<String, Object> detail(String rsv) {
-//		return this.reservationDao.selectDetail(rsv);
-//	}
-	
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map){
 		return this.reservationDao.selectList(map);

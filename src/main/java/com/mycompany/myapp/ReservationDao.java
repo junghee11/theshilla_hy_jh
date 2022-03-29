@@ -18,12 +18,8 @@ public class ReservationDao {
 	}
 	
 	public Map<String, Object> selectDetail(Map<String, Object> map) {
-		return this.sqlSessionTemplate.selectOne("reservation.rsv_detail");
+		return this.sqlSessionTemplate.selectOne("reservation.rsv_detail", map);
 	}
-	
-//	public Map<String, Object> selectDetail(String rs) {
-//		return this.sqlSessionTemplate.selectOne("reservation.rsv_detail");
-//	}
 	
 	public List<Map<String, Object>> selectList(Map<String, Object> map) {
 		return this.sqlSessionTemplate.selectList("reservation.room_list", map);

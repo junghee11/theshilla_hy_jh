@@ -15,6 +15,4 @@ public interface Reservation {
 
 	boolean remove(Map<String, Object> map);
 
-//	Map<String, Object> detail(String rsv);
-
 }

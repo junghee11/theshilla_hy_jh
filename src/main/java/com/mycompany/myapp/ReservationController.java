@@ -1,5 +1,14 @@
 package com.mycompany.myapp;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -60,26 +70,9 @@ public class ReservationController {
 		return mav;
 	}
 	
-//	@RequestMapping(value="/Reservation_step2", method = RequestMethod.GET)
-//	public ModelAndView detail(@RequestParam Map<String, Object> map) {
-//		System.out.println(map);
-//		String rs = (String) map.get("Rsv_idx");
-//		System.out.println(rs);
-//		Map<String, Object> detailMap = this.reservation.detail(rs);
-//		System.out.println(map);
-//		System.out.println(detailMap);
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("detail", detailMap);
-//		String rsv_idx = map.get("Rsv_idx").toString(); 
-//		mav.addObject("Rsv_idx", rsv_idx);
-//		mav.setViewName("/reservation/Reservation_step2");
-//		return mav;
-//	}	
-	
 	@RequestMapping(value="/Reservation_step2", method = RequestMethod.GET)
 	public ModelAndView roomDetail(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(map);
 		Map<String, Object> detailMap = this.reservation.detail(map);
 		System.out.println(map);
 		System.out.println(detailMap);
@@ -104,12 +97,51 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping(value="kakaoPay", method = RequestMethod.POST)
-	public ModelAndView payment(@RequestParam Map<String, Object> map) {
+	@RequestMapping("/kakaoPay")
+	@ResponseBody
+	public String kakaoPay(@RequestParam Map<String, Object> map) {
+		try {
+			URL uri = new URL("https://kapi.kakao.com/v1/payment/ready");
+			HttpURLConnection con = (HttpURLConnection) uri.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("Authorization", "KakaoAK d81bce73bb950cfa1375b2c6596eb4f3");
+			con.setRequestProperty("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+			con.setDoOutput(true);
+			
+			String params = "cid=TC0ONETIME"
+					+ "&partner_order_id=partner_order_id"
+					+ "&partner_user_id=partner_user_id"
+					+ "&item_name=초코파이"
+					+ "&quantity=2"
+					+ "&total_amount=1"
+					+ "&tax_free_amount=0"
+					+ "&approval_url=http://localhost:8080/kakaoPay"
+					+ "&cancel_url=http://localhost:8080/fail"
+					+ "&fail_url=http://localhost:8080/cancel";
+			OutputStream outpay = con.getOutputStream();
+			DataOutputStream outData = new DataOutputStream(outpay);
+			outData.writeBytes(params);
+			outData.close();
+			
+			int result = con.getResponseCode();
+			
+			InputStream inData;
+			if(result == 200) {
+				inData = con.getInputStream();
+			} else {
+				inData = con.getErrorStream();
+			}
+			InputStreamReader inputReader = new InputStreamReader(inData);
+			BufferedReader bufferedReader = new BufferedReader(inputReader);
+			return bufferedReader.readLine();
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
 		
-		
-		ModelAndView mav = new ModelAndView();
-		return mav;
+		return "{\result}";
 	}
 	
 	//예약확인

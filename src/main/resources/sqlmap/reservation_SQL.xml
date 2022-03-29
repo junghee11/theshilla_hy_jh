@@ -10,7 +10,7 @@
 	
 	<select id="rsv_detail" parameterType="hashMap" resultType="hashMap">
 	<![CDATA[
-		select mem_id, date_in, date_out, base_person, cash, payment, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where rsv_idx = #{Rsv_idx}
+		select mem_id, date_in, type, date_out, base_person, cash, payment, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where rsv_idx = ${Rsv_idx}
 	]]>
 	</select>
 	

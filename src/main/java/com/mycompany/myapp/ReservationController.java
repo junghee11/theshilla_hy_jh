@@ -95,8 +95,14 @@ public class ReservationController {
 		}
 		return mav;
 	}
-	
-	//버튼이 submit 하지 않아서 값을 안넘기는거 같음. submit으로 할수 잇게 변경해서 진행해보기
+	@RequestMapping(value="payInfo", method = RequestMethod.GET)
+	public ModelAndView payInformation(@RequestParam Map<String, Object> map) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(map);
+		mav.addObject("detail", map);
+		mav.setViewName("kakaoPay");
+		return mav;
+	}
 	@RequestMapping(value="/kakaoPay", method = RequestMethod.GET)
 	@ResponseBody
 	public String kakaoPay(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
@@ -118,11 +124,11 @@ public class ReservationController {
 			con.setDoOutput(true);
 			
 			String params = "cid=TC0ONETIME"
-					+ "&partner_order_id=partner_order_id"
-					+ "&partner_user_id=partner_user_id"
-					+ "&item_name=초코파이"
+					+ "&partner_order_id=" + rsv_idx
+					+ "&partner_user_id=" + mem_id
+					+ "&item_name=" + item_name
 					+ "&quantity=1"
-					+ "&total_amount=1"
+					+ "&total_amount=" + total_amount
 					+ "&tax_free_amount=0"
 					+ "&approval_url=http://localhost:8080/kakaoPay"
 					+ "&cancel_url=http://localhost:8080/fail"

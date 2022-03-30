@@ -24,7 +24,7 @@
 			<span>결제예정금액 : </span><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.cash }" />
 			<br>
 			<p>결제여부 : ${detail.payment } </p>
-			<input type="button" id="apibtn" value="결제하기">
+			<input type="button" onclick="mySubmit(1)" value="결제하기">
 			<input type="button" onclick="mySubmit(2)" value="취소하기">
 			
 		</div>
@@ -41,19 +41,20 @@
 	<script>
 		function mySubmit(index){
 			if(index == 1) {
-// 				document.myForm.action="kakaoPay"
-// 				$('#apibtn').click(function(){
-// 					 $.ajax({
-// 						url: '/kakaoPay',
-// 				        dataType: 'json',
-// 				        success: function(data){
-// 				            alert(data.tid)
-// 				        }, 
-// 				     	error: function(error){
-// 				     		alert(error)
-// 			     		}   
-// 			     	})
-// 				})
+				document.myForm.action="payInfo"
+				document.myForm.submit();
+				 $.ajax({
+					url: '/kakaoPay',
+			        dataType: 'json',
+			        success: function(data){
+			            alert(data.tid)
+			            alert("sucess");
+			        }, 
+			     	error: function(error){
+			     		alert(error)
+			     		alert("error");
+		     		}   
+		     	})
 			} else {
 				document.myForm.action="cancelDeal";
 				document.myForm.submit();

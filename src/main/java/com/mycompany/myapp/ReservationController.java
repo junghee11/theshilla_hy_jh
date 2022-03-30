@@ -74,8 +74,6 @@ public class ReservationController {
 	public ModelAndView roomDetail(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> detailMap = this.reservation.detail(map);
-		System.out.println(map);
-		System.out.println(detailMap);
 		mav.addObject("detail", detailMap);
 		String rsv_idx = map.get("Rsv_idx").toString(); 
 		mav.addObject("Rsv_idx", rsv_idx);
@@ -83,7 +81,8 @@ public class ReservationController {
 		return mav;
 	}	
 	
-	@RequestMapping(value="cancelDeal", method = RequestMethod.POST)
+	//post방식을 get으로 변경햇음 오류 없는지 다시체크
+	@RequestMapping(value="cancelDeal", method = RequestMethod.GET)
 	public ModelAndView deleteRsv(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(map);
@@ -97,9 +96,19 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping("/kakaoPay")
+	//버튼이 submit 하지 않아서 값을 안넘기는거 같음. submit으로 할수 잇게 변경해서 진행해보기
+	@RequestMapping(value="/kakaoPay", method = RequestMethod.GET)
 	@ResponseBody
-	public String kakaoPay(@RequestParam Map<String, Object> map) {
+	public String kakaoPay(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
+		System.out.println(map);
+		
+		String rsv_idx = httpServletRequest.getParameter("rsv_idx");
+		String mem_id = httpServletRequest.getParameter("mem_id");
+		String item_name = httpServletRequest.getParameter("item_name");
+		String total_amount = httpServletRequest.getParameter("total_amount");
+		
+		System.out.println(rsv_idx+", "+mem_id+", "+item_name+", "+total_amount);
+		
 		try {
 			URL uri = new URL("https://kapi.kakao.com/v1/payment/ready");
 			HttpURLConnection con = (HttpURLConnection) uri.openConnection();
@@ -112,7 +121,7 @@ public class ReservationController {
 					+ "&partner_order_id=partner_order_id"
 					+ "&partner_user_id=partner_user_id"
 					+ "&item_name=초코파이"
-					+ "&quantity=2"
+					+ "&quantity=1"
 					+ "&total_amount=1"
 					+ "&tax_free_amount=0"
 					+ "&approval_url=http://localhost:8080/kakaoPay"

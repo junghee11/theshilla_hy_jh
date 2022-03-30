@@ -11,8 +11,11 @@
 </head>
 <body>
 	<h4>예약정보</h4>
-	<form name="myForm" method="post">
+	<form name="myForm" method="get">
 		<input type="text" name="rsv_idx" value="${Rsv_idx}">
+		<input type="text" name="mem_id" value="${detail.mem_id}">
+		<input type="text" name="item_name" value="${detail.type}">
+		<input type="text" name="total_amount" value="${detail.cash}">
 		<div>
 			<img src="${detail.imgLink}" alt="room" style="width:170px; height:100px;" />
 			<p>선택하신 옵션 : ${detail.type } </p>
@@ -21,12 +24,12 @@
 			<span>결제예정금액 : </span><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.cash }" />
 			<br>
 			<p>결제여부 : ${detail.payment } </p>
-			<input type="button" onclick="mySubmit(1)" value="결제하기">
+			<input type="button" id="apibtn" value="결제하기">
 			<input type="button" onclick="mySubmit(2)" value="취소하기">
 			
 		</div>
 	</form>
-	<div id="apibtn" style="background-color:pink; cursor:pointer; color:white; width:110px; height:40px;">카카오페이</div>
+<!-- 	<div id="apibtn" style="background-color:pink; cursor:pointer; color:white; width:110px; height:40px;">카카오페이</div> -->
 <!-- 	<input type="button" id="apibtn" value="결제하기"> -->
 <!-- 	<button id="apibtn">결제하기-kakao</button> -->
 	
@@ -64,7 +67,6 @@
 					url: '/kakaoPay' ,
 			        dataType: 'json' ,
 			        success: function(data){
-			        	alert(data.next_redirect_pc_url)
 			        	var box = data.next_redirect_pc_url;
 			        	location.href = box;
 			        } , 

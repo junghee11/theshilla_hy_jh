@@ -12,23 +12,23 @@
     crossorigin="anonymous"></script>
   <!-- 제이쿼리 라이브러리 외부CDN추가 -->
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="resources/css/reset.css">
+  <link rel="stylesheet" href="resources/css/header.css">
+  <link rel="stylesheet" href="resources/css/index.css">
+  <link rel="stylesheet" href="resources/css/footer.css">
 </head>
 <body>
 <!-- header 시작 -->
 <div class="header-wrap">
 	<header>
 		<div class="rt_gnb">
-			<span><a href="login.html">로그인 &nbsp; |</a></span>
-			<span><a href="join.html">&nbsp;신라리워드가입 &nbsp; |</a></span>
+			<span><a href="/member/login">로그인 &nbsp; |</a></span>
+			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
 			<span><a href="#">&nbsp;예약확인 &nbsp; |</a></span>
 			<span><a href="#">&nbsp;한국어</a></span>
 		</div>
 		<div class="ct_gnb">
-			<a href="index.html"><img src="img/logo.gif" alt="신라호텔로고"></a>
+			<a href="/"><img src="resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
@@ -54,10 +54,10 @@
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="2000">
-            <img src="img/banner1.jpg" class="d-block w-100 img-fluid" alt="...">
+            <img src="resources/img/banner1.jpg" class="d-block w-100 img-fluid" alt="...">
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="img/banner2.jpg" class="d-block w-100" alt="...">
+            <img src="resources/img/banner2.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -100,36 +100,36 @@
         </table>
       </div>
       <div class="btn_sc">
-        <a href="reserve.html"><img src="img/btn_search.gif" alt="검색버튼이미지"></a>
+        <a href="reserve.html"><img src="resources/img/btn_search.gif" alt="검색버튼이미지"></a>
       </div>
       <!-- 호텔예약테이블 끝 -->
       <!-- 호텔예약이미지 시작 -->
       <section class="img_rs">
-        <a href="#"><img src="img/diningMainBanner.jpg" alt="예약이미지"></a>
+        <a href="#"><img src="resources/img/diningMainBanner.jpg" alt="예약이미지"></a>
       </section>
       <!-- 호텔예약이미지 끝 -->
       <!-- 스폐셜 오퍼 시작 -->
       <section class="oper_main">
-        <h3><img src="img/specialOffer.gif" alt="스폐셜오퍼이미지"></h3>
+        <h3><img src="resources/img/specialOffer.gif" alt="스폐셜오퍼이미지"></h3>
 
         <div class="oper_img1">
-          <a href="#"><img src="img/R0000001HWF0_KR.jpg" alt="크리스마스"></a>
+          <a href="#"><img src="resources/img/R0000001HWF0_KR.jpg" alt="크리스마스"></a>
         </div>
 
         <div class="oper_img2">
           <ul>
-            <li><a href="#"><img src="img/R0000001GSBT_KR.jpg" alt="제주신라숲"></a></li>
-            <li><a href="#"><img src="img/R0000001HWB0_KR.jpg" alt="요리하는사람"></a></li>
+            <li><a href="#"><img src="resources/img/R0000001GSBT_KR.jpg" alt="제주신라숲"></a></li>
+            <li><a href="#"><img src="resources/img/R0000001HWB0_KR.jpg" alt="요리하는사람"></a></li>
           </ul>
         </div>
         <div class="oper_img3">
           <ul>
-            <li><a href="#"><img src="img/R0000001HWAN_KR.jpg" alt="와인과와인잔이있는바"></a></li>
-            <li><a href="#"><img src="img/R0000001HWAS_KR.jpg" alt="커피든사람"></a></li>
+            <li><a href="#"><img src="resources/img/R0000001HWAN_KR.jpg" alt="와인과와인잔이있는바"></a></li>
+            <li><a href="#"><img src="resources/img/R0000001HWAS_KR.jpg" alt="커피든사람"></a></li>
           </ul>
         </div>
         <div class="oper_img4">
-          <a href="#"><img src="img/btnOfferMore.gif" alt="더보기버튼이미지"></a>
+          <a href="#"><img src="resources/img/btnOfferMore.gif" alt="더보기버튼이미지"></a>
         </div>
       </section>
       <!-- 스폐셜 오퍼 끝 -->
@@ -138,28 +138,28 @@
     <!-- 신라 이워즈 시작 -->
     <section class="content_wrap2">
       <section class="reward_main">
-        <h3><img src="img/rwTitle.gif" alt="신라리워즈제목"></h3>
+        <h3><img src="resources/img/rwTitle.gif" alt="신라리워즈제목"></h3>
         <div class="reward_content1">
           <ul>
-            <li><a href="#"><img src="img/rwDesc1.gif" alt="회원전용상품"></a></li>
-            <li><a href="#"><img src="img/rwDesc2.gif" alt="신라리워즈 특전"></a></li>
-            <li><a href="#"><img src="img/rwDesc3.gif" alt="신라리워즈 포인트"></a></li>
+            <li><a href="#"><img src="resources/img/rwDesc1.gif" alt="회원전용상품"></a></li>
+            <li><a href="#"><img src="resources/img/rwDesc2.gif" alt="신라리워즈 특전"></a></li>
+            <li><a href="#"><img src="resources/img/rwDesc3.gif" alt="신라리워즈 포인트"></a></li>
           </ul>
         </div>
         <div class="reward_content2">
-          <span><a href="#"><img src="img/rwBenefit.gif" alt="신라리워즈설명글"></a></span>
-          <span><a href="#"><img src="img/btnRwMore.gif" alt="신라리워즈설명글자세히보기"></a></span>
+          <span><a href="#"><img src="resources/img/rwBenefit.gif" alt="신라리워즈설명글"></a></span>
+          <span><a href="#"><img src="resources/img/btnRwMore.gif" alt="신라리워즈설명글자세히보기"></a></span>
         </div>
         <div class="reward_content3">
-          <img src="img/rwCard.png" alt="신라리워즈카드이미지">
-          <a href="#" class="rw_join"><img src="img/btnRwJoin.gif" alt="가입하기"></a>
+          <img src="resources/img/rwCard.png" alt="신라리워즈카드이미지">
+          <a href="#" class="rw_join"><img src="resources/img/btnRwJoin.gif" alt="가입하기"></a>
         </div>
       </section>
     </section>
     <!-- 신라 이워즈 끝 -->
     <!-- 신라 갤러리 시작 -->
     <section class="gallery_main">
-      <h3><img src="img/enjoyTit.gif" alt="갤러리제목"></h3>
+      <h3><img src="resources/img/enjoyTit.gif" alt="갤러리제목"></h3>
       <iframe width="1200" height="678" src="https://www.youtube.com/embed/81xxCLvADlU" title="YouTube video player"
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
@@ -168,7 +168,7 @@
 <!-- footer 시작 -->
     <div class="info_wrap">
       <div class="info_main">
-        <h3><img src="img/localBoxCompInfo.gif" alt="신라인포로고"></h3>
+        <h3><img src="resources/img/localBoxCompInfo.gif" alt="신라인포로고"></h3>
         <div class="info_content1">
           <ul>
             <li class="brand"><a href="#">The Shilla</a></li>
@@ -239,7 +239,7 @@
       <div class="footer_content3">
         <p>㈜호텔신라 서울특별시 중구 동호로 249 (우: 04605) Tel: 02-2233-3131 Fax: 02-2230-3769 사업자등록번호: 203-81-43363 통신판매신고번호:
           중구00272호 대표이사 이부진 호스팅서비스제공자 삼성SDS㈜ 서울객실예약 shilla.reserve@samsung.com 제주객실예약 jejushilla@samsung.com</p>
-        <p class="footer_content3_p"><a href="#"><img src="img/footLinkbtn.gif" alt="사업자정보확인"></a></p>
+        <p class="footer_content3_p"><a href="#"><img src="resources/img/footLinkbtn.gif" alt="사업자정보확인"></a></p>
       </div>
     </div>
 

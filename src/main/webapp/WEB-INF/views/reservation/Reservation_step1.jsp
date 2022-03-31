@@ -29,7 +29,7 @@
 		<input type="hidden" name="date_out" value="${date_out }" />
 		<input type="hidden" name="room_no" value="${row.room_no }">
 		<input type="hidden" name="price" value="${row.base_price }">
-		<input type="text" name="mem_id" placeholder="ID">
+		<input type="text" name="id" placeholder="ID">
 		<div>
 			<img src="${row.imgLink}" alt="room" style="width:170px; height:100px;">
 			<p>${row.type } </p>

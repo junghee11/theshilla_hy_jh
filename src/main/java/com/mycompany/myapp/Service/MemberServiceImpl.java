@@ -40,18 +40,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public boolean remove(Map<String, Object> map) {
-//		int a = 10;
-//		int b = 20;
-//		int c = ++a + ++b; //32
-//		
-//		int aa = 10;
-//		int bb = 20;
-//		aa++; //11
-//		bb++; //21
-//		int cc = aa+bb; //32
 		int affectRowCount = this.memberDao.delete(map);
-		return affectRowCount == 1; //delete 성공시 true, 실패하면 false를 리턴
-		//return this.bookDao.delete(map)==1;
+		return affectRowCount == 1; 
 	}
 	@Override
 	public List<Map<String,Object>> list(Map<String, Object> map) {
@@ -59,7 +49,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	//희영추가
 	
-
 	//동준 수정
 	@Override
 	public boolean select_login(Map<String, Object> map) {

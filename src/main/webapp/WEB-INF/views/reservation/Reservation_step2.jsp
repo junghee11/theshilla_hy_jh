@@ -13,7 +13,7 @@
 	<h4>예약정보</h4>
 	<form name="myForm" method="get">
 		<input type="hidden" id="rsv_idx" name="rsv_idx" value="${Rsv_idx}">
-		<input type="hidden" id="mem_id" name="mem_id" value="${detail.mem_id}">
+		<input type="hidden" id="id" name="id" value="${detail.id}">
 		<input type="hidden" id="item_name" name="item_name" value="${detail.type}">
 		<input type="hidden" id="total_amount" name="total_amount" value="${detail.cash}">
 		<div>
@@ -72,7 +72,7 @@
 		$('#apibtn').click(function(){
 			var IMP = window.IMP; // 생략가능
 			var rsv_idx = document.getElementById("rsv_idx").value;
-			var mem_id = document.getElementById("mem_id").value;
+			var mem_id = document.getElementById("id").value;
 			var item_name = document.getElementById("item_name").value;
 			var total_amount = document.getElementById("total_amount").value;
 			IMP.init('imp02494686'); 

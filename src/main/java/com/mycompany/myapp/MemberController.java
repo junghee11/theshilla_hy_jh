@@ -139,12 +139,11 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("map");
 		System.out.println(map);
-		System.out.println("map");
 		boolean isLoginSuccess = this.memberService.select_login(map);
 		System.out.println("map 로그인 결과");
 		System.out.println(isLoginSuccess);
 		if (isLoginSuccess) {
-			mav.setViewName("redirect:/member/list");
+			mav.setViewName("redirect:/");
 		} else {
 			mav.setViewName("redirect:/member/login");
 		}

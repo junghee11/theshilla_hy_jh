@@ -1,10 +1,12 @@
-package com.mycompany.myapp;
+package com.mycompany.myapp.Service;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.mycompany.myapp.DAO.ReservationDao;
 
 @Service
 public class ReservationImpl implements Reservation {

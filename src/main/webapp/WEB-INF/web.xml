@@ -47,5 +47,11 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
+	<!-- 시작페이지 설정 -->
+ 	<welcome-file-list>
+      <welcome-file-list>/WEB-INF/index.html</welcome-file-list>
+      <welcome-file-list>/WEB-INF/index.htm</welcome-file-list>
+      <welcome-file-list>/WEB-INF/index.jsp</welcome-file-list>
+   </welcome-file-list>
 </web-app>

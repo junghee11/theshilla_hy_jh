@@ -12,7 +12,7 @@
 <h4>예약하기</h4>
 <hr/>
 <h5>숙박기간</h5>
-<form method="GET" action="/date_check">
+<form method="GET" action="/reservation/date_check">
 	<input type="date" name="date_in" value="${date_in }" />
 	<input type="date" name="date_out" value="${date_out }" />
 	<input type="submit" value="선택" />
@@ -24,7 +24,7 @@
 <br>
 <h5>객실선택</h5>
 <c:forEach var="row" items="${data }">
-	<form method="post" action="select_room">
+	<form method="post" action="/reservation/select_room">
 		<input type="hidden" name="date_in" value="${date_in }" />
 		<input type="hidden" name="date_out" value="${date_out }" />
 		<input type="hidden" name="room_no" value="${row.room_no }">

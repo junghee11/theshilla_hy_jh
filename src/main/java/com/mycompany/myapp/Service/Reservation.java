@@ -1,4 +1,4 @@
-package com.mycompany.myapp;
+package com.mycompany.myapp.Service;
 
 import java.util.List;
 import java.util.Map;

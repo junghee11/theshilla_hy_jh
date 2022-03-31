@@ -23,7 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.myapp.Service.Reservation;
+
 @Controller
+@RequestMapping("reservation")
 public class ReservationController {
 	
 	@Autowired
@@ -39,7 +42,7 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping(value="date_check", method=RequestMethod.GET)
+	@RequestMapping(value="/date_check", method=RequestMethod.GET)
 	public ModelAndView dateCheck(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
 		ModelAndView mav = new ModelAndView();
 		List<Map<String, Object>> list = this.reservation.dateCheck(map);
@@ -55,16 +58,16 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping(value="select_room", method=RequestMethod.POST)
+	@RequestMapping(value="/select_room", method=RequestMethod.POST)
 	public ModelAndView createReservation(@RequestParam Map<String, Object> map) {
 		
 		ModelAndView mav = new ModelAndView();
 		System.out.println(map);
 		String Rsv_idx = this.reservation.createReservation(map);
 		if(Rsv_idx==null) {
-			mav.setViewName("redirect:/list");
+			mav.setViewName("redirect:/reservation/list");
 		} else {
-			mav.setViewName("redirect:/Reservation_step2?Rsv_idx="+Rsv_idx);
+			mav.setViewName("redirect:/reservation/Reservation_step2?Rsv_idx="+Rsv_idx);
 		}
 		
 		return mav;
@@ -90,7 +93,7 @@ public class ReservationController {
 			mav.setViewName("redirect:/index");
 		} else {
 			String rsv_idx = map.get("rsv_idx").toString();
-			mav.setViewName("redirect:/Reservation_step2?rsv_idx="+rsv_idx);
+			mav.setViewName("redirect:reservation/Reservation_step2?rsv_idx="+rsv_idx);
 		}
 		return mav;
 	}
@@ -103,7 +106,7 @@ public class ReservationController {
 			mav.setViewName("redirect:/index");
 		} else {
 			String rsv_idx = map.get("rsv_idx").toString();
-			mav.setViewName("redirect:/Reservation_step2?rsv_idx="+rsv_idx);
+			mav.setViewName("redirect:reservation/Reservation_step2?rsv_idx="+rsv_idx);
 		}
 		return mav;
 	}

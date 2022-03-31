@@ -44,7 +44,8 @@
 // 				결제api 수행 이후, 결제상태 변환
 //				api 기능 sucess시 수행하는것으로 설정
 			} else {
-				document.myForm.action="cancelDeal";
+				alert("해당 예약이 취소되었습니다.")
+				document.myForm.action="/reservation/cancelDeal";
 				document.myForm.submit();
 			}
 			
@@ -89,7 +90,7 @@
 					var msg = '결제가 완료되었습니다.';
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					
-					document.myForm.action="payOk"
+					document.myForm.action="/reservation/payOk"
 					document.myForm.submit();
 					
 				} else {

@@ -15,4 +15,6 @@ public interface Reservation {
 
 	boolean remove(Map<String, Object> map);
 
+	boolean pay_update(Map<String, Object> map);
+
 }

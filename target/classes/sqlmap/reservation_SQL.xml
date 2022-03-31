@@ -32,6 +32,11 @@
 		delete from reservation where rsv_idx = #{rsv_idx}
 	]]>
 	</delete>
+	<update id="pay_ok" parameterType="hashMap">
+	<![CDATA[
+		update reservation set payment = "결제완료" where rsv_idx = #{rsv_idx}
+	]]>
+	</update>
 <!-- 	<select id="DuplicateFind" resultType="int" parameterType="hashMap"> -->
 <!-- 	<![CDATA[ -->
 <!-- 		select count(*) from reservation where room_no = #{room_no} and (#{date_in} between date_in and date_out) or (#{date_out} between date_in and date_out); -->

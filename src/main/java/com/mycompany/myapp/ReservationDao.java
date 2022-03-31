@@ -32,4 +32,8 @@ public class ReservationDao {
 	public int delete(Map<String, Object> map) {
 		return this.sqlSessionTemplate.delete("reservation.delete_rsv", map);
 	}
+	
+	public int update(Map<String, Object> map) {
+		return this.sqlSessionTemplate.update("reservation.pay_ok", map);
+	}
 }

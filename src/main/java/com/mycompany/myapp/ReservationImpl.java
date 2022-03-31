@@ -35,10 +35,17 @@ public class ReservationImpl implements Reservation {
 	public List<Map<String, Object>> dateCheck(Map<String, Object> map) {
 		return this.reservationDao.duplicateCheck(map);
 	}
+	
 	@Override
 	public boolean remove(Map<String, Object> map) {
 		int affectFowCount = this.reservationDao.delete(map);
 		return affectFowCount ==1;
+	}
+	
+	@Override
+	public boolean pay_update(Map<String, Object> map) {
+		int affectFowCount = this.reservationDao.update(map);
+		return affectFowCount == 1;
 	}
 	
 }

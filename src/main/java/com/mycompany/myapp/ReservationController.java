@@ -81,7 +81,6 @@ public class ReservationController {
 		return mav;
 	}	
 	
-	//post방식을 get으로 변경햇음 오류 없는지 다시체크
 	@RequestMapping(value="cancelDeal", method = RequestMethod.GET)
 	public ModelAndView deleteRsv(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
@@ -95,71 +94,75 @@ public class ReservationController {
 		}
 		return mav;
 	}
-	@RequestMapping(value="payInfo", method = RequestMethod.GET)
-	public ModelAndView payInformation(@RequestParam Map<String, Object> map) {
+	@RequestMapping(value="payOk", method = RequestMethod.GET)
+	public ModelAndView payOk(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(map);
-		mav.addObject("detail", map);
-		mav.setViewName("kakaoPay");
+		boolean isUpdateSuccess = this.reservation.pay_update(map);
+		if(isUpdateSuccess) {
+			mav.setViewName("redirect:/index");
+		} else {
+			String rsv_idx = map.get("rsv_idx").toString();
+			mav.setViewName("redirect:/Reservation_step2?rsv_idx="+rsv_idx);
+		}
 		return mav;
 	}
-	@RequestMapping(value="/kakaoPay", method = RequestMethod.GET)
-	@ResponseBody
-	public String kakaoPay(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
-		System.out.println(map);
-		
-		String rsv_idx = httpServletRequest.getParameter("rsv_idx");
-		String mem_id = httpServletRequest.getParameter("mem_id");
-		String item_name = httpServletRequest.getParameter("item_name");
-		String total_amount = httpServletRequest.getParameter("total_amount");
-		
-		System.out.println(rsv_idx+", "+mem_id+", "+item_name+", "+total_amount);
-		
-		try {
-			URL uri = new URL("https://kapi.kakao.com/v1/payment/ready");
-			HttpURLConnection con = (HttpURLConnection) uri.openConnection();
-			con.setRequestMethod("POST");
-			con.setRequestProperty("Authorization", "KakaoAK d81bce73bb950cfa1375b2c6596eb4f3");
-			con.setRequestProperty("Content-type","application/x-www-form-urlencoded;charset=utf-8");
-			con.setDoOutput(true);
-			
-			String params = "cid=TC0ONETIME"
-					+ "&partner_order_id=" + rsv_idx
-					+ "&partner_user_id=" + mem_id
-					+ "&item_name=" + item_name
-					+ "&quantity=1"
-					+ "&total_amount=" + total_amount
-					+ "&tax_free_amount=0"
-					+ "&approval_url=http://localhost:8080/kakaoPay"
-					+ "&cancel_url=http://localhost:8080/fail"
-					+ "&fail_url=http://localhost:8080/cancel";
-			OutputStream outpay = con.getOutputStream();
-			DataOutputStream outData = new DataOutputStream(outpay);
-			outData.writeBytes(params);
-			outData.close();
-			
-			int result = con.getResponseCode();
-			
-			InputStream inData;
-			if(result == 200) {
-				inData = con.getInputStream();
-			} else {
-				inData = con.getErrorStream();
-			}
-			InputStreamReader inputReader = new InputStreamReader(inData);
-			BufferedReader bufferedReader = new BufferedReader(inputReader);
-			return bufferedReader.readLine();
-			
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		}
-		
-		return "{\result}";
-	}
 	
-	//예약확인
+//	@RequestMapping(value="/kakaoPay", method = RequestMethod.GET)
+//	@ResponseBody
+//	public String kakaoPay(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
+//		System.out.println(map);
+//		
+//		String rsv_idx = httpServletRequest.getParameter("rsv_idx");
+//		String mem_id = httpServletRequest.getParameter("mem_id");
+//		String item_name = httpServletRequest.getParameter("item_name");
+//		String total_amount = httpServletRequest.getParameter("total_amount");
+//		
+//		System.out.println(rsv_idx+", "+mem_id+", "+item_name+", "+total_amount);
+//		
+//		try {
+//			URL uri = new URL("https://kapi.kakao.com/v1/payment/ready");
+//			HttpURLConnection con = (HttpURLConnection) uri.openConnection();
+//			con.setRequestMethod("POST");
+//			con.setRequestProperty("Authorization", "KakaoAK d81bce73bb950cfa1375b2c6596eb4f3");
+//			con.setRequestProperty("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+//			con.setDoOutput(true);
+//			
+//			String params = "cid=TC0ONETIME"
+//					+ "&partner_order_id=" + rsv_idx
+//					+ "&partner_user_id=" + mem_id
+//					+ "&item_name=" + item_name
+//					+ "&quantity=1"
+//					+ "&total_amount=" + total_amount
+//					+ "&tax_free_amount=0"
+//					+ "&approval_url=http://localhost:8080/kakaoPay"
+//					+ "&cancel_url=http://localhost:8080/fail"
+//					+ "&fail_url=http://localhost:8080/cancel";
+//			OutputStream outpay = con.getOutputStream();
+//			DataOutputStream outData = new DataOutputStream(outpay);
+//			outData.writeBytes(params);
+//			outData.close();
+//			
+//			int result = con.getResponseCode();
+//			
+//			InputStream inData;
+//			if(result == 200) {
+//				inData = con.getInputStream();
+//			} else {
+//				inData = con.getErrorStream();
+//			}
+//			InputStreamReader inputReader = new InputStreamReader(inData);
+//			BufferedReader bufferedReader = new BufferedReader(inputReader);
+//			return bufferedReader.readLine();
+//			
+//		} catch (MalformedURLException e) {
+//			e.printStackTrace();
+//		} catch (IOException e2) {
+//			e2.printStackTrace();
+//		}
+//		
+//		return "{\result}";
+//	}
 	
 	
 	

@@ -136,10 +136,8 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView selectPost(@RequestParam Map<String, Object> map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("map");
 		System.out.println(map);
 		boolean isLoginSuccess = this.memberService.select_login(map);
-		System.out.println("map 로그인 결과");
 		System.out.println(isLoginSuccess);
 		if (isLoginSuccess) {
 			String id = map.get("id").toString();

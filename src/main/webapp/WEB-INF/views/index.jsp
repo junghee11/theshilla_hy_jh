@@ -34,14 +34,13 @@
 	   <% } %>
 			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
 			<span><a href="#">&nbsp;예약확인 &nbsp; |</a></span>
-			<span><a href="#">&nbsp;한국어</a></span>
 		</div>
 		<div class="ct_gnb">
 			<a href="/"><img src="resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-				<li><a href="#">호텔찾기</a></li>
+				<li><a href="#">이용후기</a></li>
 				<li><a href="reservation/list?id=<%=id %>">예약</a></li>
 			</ul>
 		</nav>

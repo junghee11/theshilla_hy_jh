@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<title>예약하기_Step2</title>
+<title>나의예약현황</title>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="../resources/js/reserve.js"></script>
 	<link rel="stylesheet" href="../resources/css/reset.css">
@@ -60,47 +61,44 @@
 			<!--	<h1 style="text-align:center;"><img src="img/rsv_step1_on.png" alt=""> </h1> -->
 
 
-			<h1 style="margin-left:10px; margin-bottom: 20px; font-size:18px;">선택객실목록</h1>
+			<h1 style="margin-left:10px; margin-bottom: 20px; font-size:18px;">${detail.id } 님의 객실목록</h1>
 			<hr style="border: 2px solid #856f56; ">
-			<form name="myForm" method="get">
-			<input type="hidden" id="rsv_idx" name="rsv_idx" value="${Rsv_idx}">
-			<input type="hidden" id="id" name="id" value="${detail.id}">
-			<input type="hidden" id="item_name" name="item_name" value="${detail.type}">
-			<input type="hidden" id="total_amount" name="total_amount" value="${detail.cash}">
-<%-- 			<img src="${detail.imgLink}" alt="room" style="width:170px; height:100px;" /> --%>
 			<div class="table_rs-wrap">
 				<table class="table_rs">
 					<tr>
-                        <th>예약자명</th>
 						<th>객실명</th>
 						<th>체크인</th>
 						<th>체크아웃</th>
-						<th>성인</th>
 						<th>결제금액</th>
 						<th>결제여부</th>
+						<th>선택</th>
 					</tr>
+					<c:forEach var="list" items="${detail }">
+					
 					<tr>
-                        <td>${detail.id }</td>
-						<td>${detail.type }</td>
-						<td>${detail.date_in }</td>
-						<td>${detail.date_out }</td>
-						<td>${detail.base_person } 명</td>
-						<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.cash }" /></td>
-						<td>${detail.payment }</td>
+						<td>${list.type }</td>
+						<td>${list.date_in }</td>
+						<td>${list.date_out }</td>
+						<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${list.cash }" /></td>
+						<td>${list.payment }</td>
+						<td>
+						<form name="myForm" method="get">
+						<input type="hidden" id="rsv_idx" name="rsv_idx" value="${Rsv_idx}">
+						<input type="hidden" id="id" name="id" value="${list.id}">
+						<input type="hidden" id="item_name" name="item_name" value="${list.type}">
+						<input type="hidden" id="total_amount" name="total_amount" value="${list.cash}">
+						<button type="button" id="apibtn" onclick="mySubmit(1)" name="button">결제하기</button>
+						<button type="button" onclick="mySubmit(2)" name="button">취소</button>
+						</form>
+						</td>
 					</tr>
+					
+					</c:forEach>
 				</table>
 				<div class="pay_count">
-					<ul>
-						<li>총 결제 금액 &nbsp;&nbsp;&nbsp; <fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.cash }" /><span>원</span></li>
-						
-					</ul>
-<!-- 					<input type="button" id="apibtn" onclick="mySubmit(1)" value="결제하기"> -->
-<!-- 					<input type="button" onclick="mySubmit(2)" value="취소하기"> -->
-					<button type="button" onclick="mySubmit(2)" name="button">취소(홈으로)</button>
-					<button type="button" id="apibtn" onclick="mySubmit(1)" name="button">결제하기</button>
 				</div>
 			</div>
-			</form>
+			
 		</section>
 
 

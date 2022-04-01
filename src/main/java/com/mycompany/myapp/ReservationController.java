@@ -67,6 +67,8 @@ public class ReservationController {
 		
 		ModelAndView mav = new ModelAndView();
 		System.out.println(map);
+		String id = map.get("id").toString();
+		mav.addObject("id",id);
 		String Rsv_idx = this.reservation.createReservation(map);
 		if(Rsv_idx==null) {
 			mav.setViewName("redirect:/reservation/list");

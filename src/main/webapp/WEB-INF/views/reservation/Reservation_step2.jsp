@@ -18,6 +18,7 @@
 		<input type="hidden" id="total_amount" name="total_amount" value="${detail.cash}">
 		<div>
 			<img src="${detail.imgLink}" alt="room" style="width:170px; height:100px;" />
+			<p>예약자 : ${detail.id } </p>
 			<p>선택하신 옵션 : ${detail.type } </p>
 			<p>인원 : ${detail.base_person } 명</p>
 			<p>기간 : ${detail.date_in } ~ ${detail.date_out }</p>

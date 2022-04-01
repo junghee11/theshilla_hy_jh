@@ -22,7 +22,16 @@
 <div class="header-wrap">
 	<header>
 		<div class="rt_gnb">
+		<% 
+// 		String id = (String)request.getAttribute("id");
+		String id = request.getParameter("id");
+		if(id == null) {
+		%>
 			<span><a href="/member/login">로그인 &nbsp; |</a></span>
+		<% } else { %>
+	    	<span><b><%=id %></b>님 &nbsp; |</span>
+	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
+	   <% } %>
 			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
 			<span><a href="#">&nbsp;예약확인 &nbsp; |</a></span>
 			<span><a href="#">&nbsp;한국어</a></span>
@@ -33,7 +42,7 @@
 		<nav class="lb_gnb">
 			<ul>
 				<li><a href="#">호텔찾기</a></li>
-				<li><a href="reserve.html">예약</a></li>
+				<li><a href="reservation/list?id=<%=id %>">예약</a></li>
 			</ul>
 		</nav>
 

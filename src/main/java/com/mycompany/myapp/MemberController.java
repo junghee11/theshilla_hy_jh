@@ -131,11 +131,10 @@ public class MemberController {
 		return mav;
 		}
 	
-
 	// 동준 추가
 	// 본격적 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView selectPost(@RequestParam Map<String, Object> map) {
+	public ModelAndView selectPost(@RequestParam Map<String, Object> map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("map");
 		System.out.println(map);
@@ -143,6 +142,8 @@ public class MemberController {
 		System.out.println("map 로그인 결과");
 		System.out.println(isLoginSuccess);
 		if (isLoginSuccess) {
+			String id = map.get("id").toString();
+			mav.addObject("id", id);
 			mav.setViewName("redirect:/");
 		} else {
 			mav.setViewName("redirect:/member/login");
@@ -156,10 +157,8 @@ public class MemberController {
 	   @RequestMapping("/logout")
 	    public ModelAndView logout(HttpSession session) {
 	        session.invalidate();
-	        ModelAndView mv = new ModelAndView("redirect:/member/list");
+	        ModelAndView mv = new ModelAndView("redirect:/");
 	        return mv;
 	    }
-
-	
 
 }

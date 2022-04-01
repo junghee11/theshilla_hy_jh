@@ -13,6 +13,7 @@
 <hr/>
 <h5>숙박기간</h5>
 <form method="GET" action="/reservation/date_check">
+	<input type="hidden" name="mem_id" value="${id }" />
 	<input type="date" name="date_in" value="${date_in }" />
 	<input type="date" name="date_out" value="${date_out }" />
 	<input type="submit" value="선택" />
@@ -29,7 +30,7 @@
 		<input type="hidden" name="date_out" value="${date_out }" />
 		<input type="hidden" name="room_no" value="${row.room_no }">
 		<input type="hidden" name="price" value="${row.base_price }">
-		<input type="text" name="id" placeholder="ID">
+		<input type="hidden" name="id" value="${id }" placeholder="ID">
 		<div>
 			<img src="${row.imgLink}" alt="room" style="width:170px; height:100px;">
 			<p>${row.type } </p>

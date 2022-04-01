@@ -36,7 +36,9 @@ public class ReservationController {
 	public ModelAndView list(@RequestParam Map<String, Object> map) {
 		List<Map<String, Object>> list = this.reservation.list(map);
 		ModelAndView mav = new ModelAndView();
-		
+		System.out.println(map);
+		String id = map.get("id").toString();
+		mav.addObject("id",id);
 		mav.addObject("data", list);
 		mav.setViewName("reservation/Reservation_step1");
 		return mav;
@@ -47,10 +49,12 @@ public class ReservationController {
 		ModelAndView mav = new ModelAndView();
 		List<Map<String, Object>> list = this.reservation.dateCheck(map);
 		
+		String mem_id = httpServletRequest.getParameter("mem_id");
 		String date_in = httpServletRequest.getParameter("date_in");
 		String date_out = httpServletRequest.getParameter("date_out");
 		
 		mav.addObject("data", list);
+		mav.addObject("id", mem_id);
 		mav.addObject("date_in", date_in);
 		mav.addObject("date_out", date_out);
 
@@ -90,20 +94,21 @@ public class ReservationController {
 		System.out.println(map);
 		boolean isDeleteSuccess = this.reservation.remove(map);
 		if(isDeleteSuccess) {
-			mav.setViewName("redirect:/index");
+			mav.setViewName("redirect:/");
 		} else {
 			String rsv_idx = map.get("rsv_idx").toString();
 			mav.setViewName("redirect:reservation/Reservation_step2?rsv_idx="+rsv_idx);
 		}
 		return mav;
 	}
+	
 	@RequestMapping(value="payOk", method = RequestMethod.GET)
 	public ModelAndView payOk(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(map);
 		boolean isUpdateSuccess = this.reservation.pay_update(map);
 		if(isUpdateSuccess) {
-			mav.setViewName("redirect:/index");
+			mav.setViewName("redirect:/");
 		} else {
 			String rsv_idx = map.get("rsv_idx").toString();
 			mav.setViewName("redirect:reservation/Reservation_step2?rsv_idx="+rsv_idx);

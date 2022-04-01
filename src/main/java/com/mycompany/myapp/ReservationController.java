@@ -79,6 +79,18 @@ public class ReservationController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/my_room", method=RequestMethod.GET)
+	public ModelAndView my_reservation(@RequestParam Map<String, Object> map) {
+		List<Map<String, Object>> list = this.reservation.mylist(map);
+		ModelAndView mav = new ModelAndView();
+		System.out.println(map);
+		String id = map.get("id").toString();
+		mav.addObject("id",id);
+		mav.addObject("detail", list);
+		mav.setViewName("reservation/my_Reservation");
+		return mav;
+	}
+	
 	@RequestMapping(value="/Reservation_step2", method = RequestMethod.GET)
 	public ModelAndView roomDetail(@RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();

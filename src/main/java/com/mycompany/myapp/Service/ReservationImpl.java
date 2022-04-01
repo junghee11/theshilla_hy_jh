@@ -34,6 +34,11 @@ public class ReservationImpl implements Reservation {
 	}
 	
 	@Override
+	public List<Map<String, Object>> mylist(Map<String, Object> map) {
+		return this.reservationDao.myList(map);
+	}
+	
+	@Override
 	public List<Map<String, Object>> dateCheck(Map<String, Object> map) {
 		return this.reservationDao.duplicateCheck(map);
 	}

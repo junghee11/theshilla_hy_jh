@@ -17,4 +17,6 @@ public interface Reservation {
 
 	boolean pay_update(Map<String, Object> map);
 
+	List<Map<String, Object>> mylist(Map<String, Object> map);
+
 }

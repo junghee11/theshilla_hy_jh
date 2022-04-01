@@ -61,7 +61,7 @@
 			<!--	<h1 style="text-align:center;"><img src="img/rsv_step1_on.png" alt=""> </h1> -->
 
 
-			<h1 style="margin-left:10px; margin-bottom: 20px; font-size:18px;">${detail.id } 님의 객실목록</h1>
+			<h1 style="margin-left:10px; margin-bottom: 20px; font-size:18px;"><%=id %> 님의 객실목록</h1>
 			<hr style="border: 2px solid #856f56; ">
 			<div class="table_rs-wrap">
 				<table class="table_rs">
@@ -83,12 +83,21 @@
 						<td>${list.payment }</td>
 						<td>
 						<form name="myForm" method="get">
-						<input type="hidden" id="rsv_idx" name="rsv_idx" value="${Rsv_idx}">
+						<input type="hidden" id="rsv_idx" name="rsv_idx" value="${list.rsv_idx}">
 						<input type="hidden" id="id" name="id" value="${list.id}">
 						<input type="hidden" id="item_name" name="item_name" value="${list.type}">
 						<input type="hidden" id="total_amount" name="total_amount" value="${list.cash}">
-						<button type="button" id="apibtn" onclick="mySubmit(1)" name="button">결제하기</button>
-						<button type="button" onclick="mySubmit(2)" name="button">취소</button>
+						<c:set var="pay_or_not" value="${list.payment }" />
+							<c:choose>
+							    <c:when test="${pay_or_not eq '결제완료'}">
+							        <button type="button" onclick="mySubmit(3)">리뷰쓰기</button>
+							    </c:when>
+							    <c:otherwise>
+							        <button type="button" id="apibtn" onclick="mySubmit(1)" name="button">결제하기</button>
+									<button type="button" onclick="mySubmit(2)" name="button">취소</button>
+							    </c:otherwise>
+							</c:choose>
+						
 						</form>
 						</td>
 					</tr>

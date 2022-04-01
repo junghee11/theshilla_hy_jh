@@ -27,6 +27,12 @@
 	]]>
 	</select>
 	
+	<select id="my_rsv" resultType="hashMap" parameterType="hashMap">
+	<![CDATA[
+		select rsv_idx, id, ro.room_no, type, date_in, date_out, payment, cash from reservation rv join room ro on rv.room_no=ro.room_no where id = #{id} order by date_in desc
+	]]>
+	</select>	
+	
 	<delete id="delete_rsv" parameterType="hashMap">
 	<![CDATA[
 		delete from reservation where rsv_idx = #{rsv_idx}

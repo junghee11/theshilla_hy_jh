@@ -25,6 +25,10 @@ public class ReservationDao {
 		return this.sqlSessionTemplate.selectList("reservation.room_list", map);
 	}
 	
+	public List<Map<String, Object>> myList(Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectList("reservation.my_rsv", map);
+	}
+	
 	public List<Map<String, Object>> duplicateCheck(Map<String, Object> map) {
 		return this.sqlSessionTemplate.selectList("reservation.checked_room", map);
 	}

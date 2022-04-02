@@ -84,7 +84,7 @@
 						<td>${detail.type }</td>
 						<td>${detail.date_in }</td>
 						<td>${detail.date_out }</td>
-						<td>${detail.base_person } 명</td>
+						<td>${detail.person } 명</td>
 						<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.cash }" /></td>
 						<td>${detail.payment }</td>
 					</tr>

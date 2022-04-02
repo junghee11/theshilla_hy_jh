@@ -33,7 +33,7 @@
 	<script src="../resources/js/reserve.js"></script>
 	<link rel="stylesheet" href="../resources/css/reset.css">
 	<link rel="stylesheet" href="../resources/css/header.css">
-	<link rel="stylesheet" href="../resources/css/reserve.css">
+	<link rel="stylesheet" href="../resources/css/reserve.css?after">
 	<link rel="stylesheet" href="../resources/css/date.css">
 	<link rel="stylesheet" href="../resources/css/footer.css">
 
@@ -103,13 +103,13 @@
 			<div class="room_select">
 				<ul>
 				<c:forEach var="row" items="${data }">
-					<form method="post" id="check_room" action="/reservation/select_room">
-					<input type="hidden" name="date_in" value="${date_in }" />
-					<input type="hidden" name="date_out" value="${date_out }" />
-					<input type="hidden" name="room_no" value="${row.room_no }">
-					<input type="hidden" name="price" value="${row.base_price }">
-					<input type="hidden" name="id" value="${id }" >
 					<li>
+					<form method="post" action="/reservation/select_room">
+						<input type="hidden" name="date_in" value="${date_in }" />
+						<input type="hidden" name="date_out" value="${date_out }" />
+						<input type="hidden" name="room_no" value="${row.room_no }">
+						<input type="hidden" name="price" value="${row.base_price }">
+						<input type="hidden" name="id" value="${id }" >
 						<div class="select_flex">
 							<div class="select1">
 								<img src="${row.imgLink}" alt="room">
@@ -120,28 +120,29 @@
 							</div>
 							<div class="select3">
 								<div>
-									<span style="margin-right:10px;">성인</span>
-									<i class="fa-solid fa-minus" id="decreaseQuantity1" style="cursor:pointer; font-size:15px; padding: 10px;"></i>
-									<span id="numberUpDown1">${row.base_person }</span>
-									<i class="fa-solid fa-plus" id="increaseQuantity1" style="cursor:pointer; font-size:15px; padding: 10px;"></i>
+								<span style="margin-right:10px;">성인</span>
+                           <input type=number name="person" onClick="javascript:this.form.amount.value++;" max="${row.max_person }" min="1" value="${row.base_person }">
+<!--                            <input type="text" id="numberUpDown1" name="person" value=""> -->
+								
 								</div>
 							</div>
 							<div class="select4">
 								<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${row.base_price }" /></p>
 							</div>
 							<div class="select5">
-<!-- 								<input type="submit" value="예약하기"> -->
-								<a href="#" onclick="return chk_form()">
-									<img src="../resources/img/reserve_step1_rsvopen.gif" alt="예약하기 버튼"></a>
+								<input type="submit" value="">
+<!-- 								<a href="#" onclick="return chk_form()"> -->
+<!-- 									<img src="../resources/img/reserve_step1_rsvopen.gif" alt="예약하기 버튼"> -->
+								</input>
 							</div>
-							<script>
-								function chk_form(){
-									document.getElementById('check_room').submit()
-								}
-							</script>
+<!-- 							<script> -->
+<!-- // 								function chk_form(){ -->
+<!-- // 									document.getElementById('check_room').submit() -->
+<!-- // 								} -->
+<!-- 							</script> -->
 						</div>
+						</form>
 					</li>
-					</form>
 				</c:forEach>
 				</ul>
 			</div>

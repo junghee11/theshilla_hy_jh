@@ -82,23 +82,29 @@
 						<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${list.cash }" /></td>
 						<td>${list.payment }</td>
 						<td>
-						<form name="myForm" method="get">
-						<input type="hidden" id="rsv_idx" name="rsv_idx" value="${list.rsv_idx}">
-						<input type="hidden" id="id" name="id" value="${list.id}">
-						<input type="hidden" id="item_name" name="item_name" value="${list.type}">
-						<input type="hidden" id="total_amount" name="total_amount" value="${list.cash}">
+<!-- 						<form name="myForm" method="get"> -->
+<%-- 						<input type="hidden" name="Rsv_idx" value="${list.rsv_idx}"> --%>
+<%-- 						<input type="hidden" name="id" value="${list.id}"> --%>
+<%-- 						<input type="hidden" name="item_name" value="${list.type}"> --%>
+<%-- 						<input type="hidden" name="total_amount" value="${list.cash}"> --%>
 						<c:set var="pay_or_not" value="${list.payment }" />
 							<c:choose>
 							    <c:when test="${pay_or_not eq '결제완료'}">
-							        <button type="button" onclick="mySubmit(3)">리뷰쓰기</button>
+								    <form action="/review/create" method="get">
+									<input type="hidden" name="rsv_idx" value="${list.rsv_idx}">
+							    	<input type=submit value="리뷰쓰기">
+							    	</form>
+<!-- 							        <button type="button" onclick="mySubmit(2)">리뷰쓰기</button> -->
 							    </c:when>
 							    <c:otherwise>
-							        <button type="button" id="apibtn" onclick="mySubmit(1)" name="button">결제하기</button>
-									<button type="button" onclick="mySubmit(2)" name="button">취소</button>
+							    	<form action="/reservation/Reservation_step2" method="get">
+									<input type="hidden" name="Rsv_idx" value="${list.Rsv_idx}">
+							    	<input type=submit value="결제&취소">
+							    	</form>
+<!-- 							        <button type="button" onclick="mySubmit(1)">결제&취소</button> -->
 							    </c:otherwise>
 							</c:choose>
-						
-						</form>
+<!-- 						</form> -->
 						</td>
 					</tr>
 					
@@ -192,11 +198,10 @@
 <script>
 		function mySubmit(index){
 			if(index == 1) {
-// 				결제api 수행 이후, 결제상태 변환
-//				api 기능 sucess시 수행하는것으로 설정
+				document.myForm.action="/reservation/Reservation_step2";
+				document.myForm.submit();
 			} else {
-				alert("해당 예약이 취소되었습니다.")
-				document.myForm.action="/reservation/cancelDeal";
+				document.myForm.action="/review/create";
 				document.myForm.submit();
 			}
 			

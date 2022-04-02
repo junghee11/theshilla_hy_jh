@@ -4,19 +4,19 @@
 
 	<insert id="insert_reservation" parameterType="hashMap" useGeneratedKeys="true" keyProperty="rsv_idx">
 	<![CDATA[
-		insert into reservation(id, room_no, date_in, date_out, cash) values (#{id}, #{room_no}, #{date_in}, #{date_out}, #{price})
+		insert into reservation(id, room_no, date_in, date_out, cash, person) values (#{id}, #{room_no}, #{date_in}, #{date_out}, #{price}, #{person})
 	]]>
 	</insert>
 	
 	<select id="rsv_detail" parameterType="hashMap" resultType="hashMap">
 	<![CDATA[
-		select id, date_in, type, date_out, base_person, cash, payment, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where rsv_idx = ${Rsv_idx}
+		select id, date_in, type, date_out, person, cash, payment, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where rsv_idx = ${Rsv_idx}
 	]]>
 	</select>
 	
 	<select id="room_list" parameterType="hashMap" resultType="hashMap">
 	<![CDATA[
-		select room_no, type, base_price, base_person, imgLink from room order by room_no asc
+		select room_no, type, base_price, base_person, max_person, imgLink from room order by room_no asc
 	]]>
 	</select>
 	

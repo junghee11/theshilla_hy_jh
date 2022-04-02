@@ -46,3 +46,11 @@ border-bottom: 1px solid #ddd;
 	margin-right: -6px;
 	padding-bottom: 6px;
 }
+
+.content_wrap1 .room_select .select5 input[type=submit] {
+   background:url('../img/reserve_step1_rsvopen.gif');
+background-repeat: no-repeat;
+width:140px;
+height:44px;
+border: 0;
+}

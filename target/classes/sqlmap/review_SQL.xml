@@ -4,8 +4,8 @@
 <mapper namespace="review">
 	<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="review_no">
 	<![CDATA[
-	insert into review (review_title,review_content,type,room_rating,date_in)
-	values (#{review_title},#{review_content},#{type},#{room_rating},#{date_in})
+	insert into review (id, review_title, review_content, type, room_rating, date_in)
+	values (#{id}, #{review_title}, #{review_content}, #{type}, #{room_rating}, #{date_in})
 	]]>
 	</insert>
 	

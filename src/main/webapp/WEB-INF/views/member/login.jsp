@@ -18,26 +18,23 @@
 <div class="header-wrap">
 	<header>
 		<div class="rt_gnb">
-			<span><a href="login.html">로그인 &nbsp; |</a></span>
-			<span><a href="join.html">&nbsp;신라리워드가입 &nbsp; |</a></span>
-			<span><a href="#">&nbsp;예약확인 &nbsp; |</a></span>
-			<span><a href="#">&nbsp;한국어</a></span>
+			<span><a href="/member/login">로그인 &nbsp; |</a></span>
+			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
 		</div>
 		<div class="ct_gnb">
-			<a href="index.html"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+			<a href="/"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-				<li><a href="#">호텔찾기</a></li>
-				<li><a href="reserve.html">예약</a></li>
+				<li><a href="/member/login">이용후기</a></li>
+				<li><a href="/member/login">예약</a></li>
 			</ul>
 		</nav>
 
 		<nav class="rb_gnb">
 			<ul>
-				<li><a href="#">호텔신라 소개</a></li>
-				<li><a href="#">고객문의</a></li>
-				<li><a href="#">신라리워즈</a></li>
+				<li><a href="#">신라호텔소개</a></li>
+				<li><a href="/review/list">이용후기</a></li>
 			</ul>
 		</nav>
 	</header>

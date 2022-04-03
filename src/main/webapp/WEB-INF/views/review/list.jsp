@@ -37,8 +37,8 @@
 
 				$products.after('<div id="nav">');
 
-				var $tr = $($products).find('tbody tr');
-				var rowTotals = $tr.length;
+				var $li = $($products).find('li');
+				var rowTotals = $li.length;
 				//  console.log(rowTotals);
 
 				var pageTotal = Math.ceil(rowTotals / rowPerPage);
@@ -49,7 +49,7 @@
 							'#nav');
 				}
 
-				$tr.addClass('off-screen').slice(0, rowPerPage).removeClass(
+				$li.addClass('off-screen').slice(0, rowPerPage).removeClass(
 						'off-screen');
 
 				var $pagingLink = $('#nav a');
@@ -72,7 +72,7 @@
 					var startItem = currPage * rowPerPage;
 					var endItem = startItem + rowPerPage;
 
-					$tr.css('opacity', '0.0').addClass('off-screen').slice(
+					$li.css('opacity', '0.0').addClass('off-screen').slice(
 							startItem, endItem).removeClass('off-screen')
 							.animate({
 								opacity : 1
@@ -105,24 +105,41 @@
 	<div class="header-wrap">
 		<header>
 			<div class="rt_gnb">
-				<span><a href="login.html">로그인 &nbsp; |</a></span>
-				<span><a href="join.html">&nbsp;신라리워드가입 &nbsp; |</a></span>
-				<span><a href="#">&nbsp;예약확인</a></span>
+				<% 
+		String id = request.getParameter("id");
+		if(id == null) {
+		%>
+			<span><a href="/member/login">로그인 &nbsp; |</a></span>
+			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
+		<% } else { %>
+	    	<span><b><%=id %></b>님 &nbsp; |</span>
+	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
+	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
+	   <% } %>
 			</div>
 			<div class="ct_gnb">
-				<a href="index.html"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+				<a href="/"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 			</div>
 			<nav class="lb_gnb">
 				<ul>
-					<li><a href="#">이용후기</a></li>
-					<li><a href="reserve.html">예약</a></li>
+					<% 
+			if(id == null) {
+			%>
+				
+				<li><a href="/member/login">이용후기</a></li>
+				<li><a href="/member/login">예약</a></li>
+			<% } else { %>
+				<li><a href="/reservation/my_room?id=<%=id%>">예약확인</a></li>
+				<li><a href="/reservation/list?id=<%=id %>">예약</a></li>
+			
+			<% } %>
 				</ul>
 			</nav>
 
 			<nav class="rb_gnb">
 				<ul>
-					<li><a href="#">호텔신라 소개</a></li>
-					<li><a href="#">고객문의</a></li>
+					<li><a href="#">신라호텔소개</a></li>
+				<li><a href="/review/list">이용후기</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -142,6 +159,12 @@
 			<hr style="border: 2px solid #856f56; ">
 			<div class="room_select">
 				<ul id="products">
+				<form action="" id="setRows">
+				<p>
+					showing <input type="text" name="rowPerPage" value="3"> item
+					per page
+				</p>
+				</form>
 				<c:forEach var="row" items="${data}">
 					<li>
 						<div class="select_flex" style="height:250px;">

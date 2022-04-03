@@ -25,31 +25,41 @@
 		<% 
 // 		String id = (String)request.getAttribute("id");
 		String id = request.getParameter("id");
+		session.setAttribute("user", id);
+		
 		if(id == null) {
 		%>
 			<span><a href="/member/login">로그인 &nbsp; |</a></span>
+			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
 		<% } else { %>
 	    	<span><b><%=id %></b>님 &nbsp; |</span>
 	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
+	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
 	   <% } %>
-			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
-			<span><a href="/reservation/my_room?id=<%=id%>">&nbsp;예약확인 &nbsp; |</a></span>
 		</div>
 		<div class="ct_gnb">
 			<a href="/"><img src="resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-				<li><a href="#">이용후기</a></li>
-				<li><a href="reservation/list?id=<%=id %>">예약</a></li>
+			<% 
+			if(id == null) {
+			%>
+				
+				<li><a href="/member/login">이용후기</a></li>
+				<li><a href="/member/login">예약</a></li>
+			<% } else { %>
+				<li><a href="/reservation/my_room?id=<%=id%>">예약확인</a></li>
+				<li><a href="/reservation/list?id=<%=id %>">예약</a></li>
+			
+			<% } %>
 			</ul>
 		</nav>
 
 		<nav class="rb_gnb">
 			<ul>
-				<li><a href="#">호텔신라 소개</a></li>
-				<li><a href="#">고객문의</a></li>
-				<li><a href="#">신라리워즈</a></li>
+				<li><a href="/info_about">신라호텔소개</a></li>
+				<li><a href="/review/list">이용후기</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -84,37 +94,37 @@
 
     <section class="content_wrap1">
       <!-- 호텔예약테이블 시작 -->
-      <div class="table_rs-wrap">
-        <table class="table_rs">
-          <tr>
-            <th>호텔 또는 도시</th>
-            <th>체크인</th>
-            <th>체크아웃</th>
-            <th>객실</th>
-            <th>성인</th>
+<!--       <div class="table_rs-wrap"> -->
+<!--         <table class="table_rs"> -->
+<!--           <tr> -->
+<!--             <th>호텔 또는 도시</th> -->
+<!--             <th>체크인</th> -->
+<!--             <th>체크아웃</th> -->
+<!--             <th>객실</th> -->
+<!--             <th>성인</th> -->
 
-            <th>어린이</th>
-            <th>유아</th>
-          </tr>
-          <tr>
-            <td>호텔을 선택해주세요.</td>
-            <td>2022.01.06 (목)</td>
-            <td>1박</td>
-            <td>2022.01.07 (금)</td>
-            <td>1</td>
-            <td>2</td>
-            <td>0</td>
-          </tr>
-        </table>
-      </div>
-      <div class="btn_sc">
-        <a href="reserve.html"><img src="resources/img/btn_search.gif" alt="검색버튼이미지"></a>
-      </div>
+<!--             <th>어린이</th> -->
+<!--             <th>유아</th> -->
+<!--           </tr> -->
+<!--           <tr> -->
+<!--             <td>호텔을 선택해주세요.</td> -->
+<!--             <td>2022.01.06 (목)</td> -->
+<!--             <td>1박</td> -->
+<!--             <td>2022.01.07 (금)</td> -->
+<!--             <td>1</td> -->
+<!--             <td>2</td> -->
+<!--             <td>0</td> -->
+<!--           </tr> -->
+<!--         </table> -->
+<!--       </div> -->
+<!--       <div class="btn_sc"> -->
+<!--         <a href="reserve.html"><img src="resources/img/btn_search.gif" alt="검색버튼이미지"></a> -->
+<!--       </div> -->
       <!-- 호텔예약테이블 끝 -->
       <!-- 호텔예약이미지 시작 -->
-      <section class="img_rs">
-        <a href="#"><img src="resources/img/diningMainBanner.jpg" alt="예약이미지"></a>
-      </section>
+<!--       <section class="img_rs"> -->
+<!--         <a href="#"><img src="resources/img/diningMainBanner.jpg" alt="예약이미지"></a> -->
+<!--       </section> -->
       <!-- 호텔예약이미지 끝 -->
       <!-- 스폐셜 오퍼 시작 -->
       <section class="oper_main">

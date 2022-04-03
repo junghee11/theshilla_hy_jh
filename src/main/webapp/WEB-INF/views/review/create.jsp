@@ -14,11 +14,6 @@
 </head>
 <body>
 <%-- <% String id = request.getParameter("id"); %> --%>
-<!-- 태그 적는 방식 2가지. -->
-<!-- 1. 보통 태그는 여는 태그와 닫는 태그로 구성되는 데, 여는 태그와 닫는 태그가 반드시 다 있어야 할 경우 <h1></h1> -->
-<!-- 2. <img> 태그 처럼 닫는 태그가 없을 때, <img/> 이렇게 표기하기 함 -->
-<!-- 3. <img>처럼 쓰는 건 HTML표기법. <img/>처럼 쓰는 건 xhtml 표기법 -->
-
 <!-- 	<h1>후기 작성하기</h1> -->
 <!-- 	<form method="POST"> -->
 <!-- 		<p>제목 : <input type="text" name="review_title"></p> -->
@@ -34,26 +29,28 @@
 <div class="header-wrap">
 	<header>
 		<div class="rt_gnb">
-			<span><a href="login.html">로그인 &nbsp; |</a></span>
-			<span><a href="join.html">&nbsp;신라리워드가입 &nbsp; |</a></span>
-			<span><a href="#">&nbsp;예약확인 &nbsp; |</a></span>
-			<span><a href="#">&nbsp;한국어</a></span>
+		<% 
+// 		String id = (String)request.getAttribute("id");
+		String id = request.getParameter("id");
+		%>
+			<span><b><%=id %></b>님 &nbsp; |</span>
+	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
+	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
 		</div>
 		<div class="ct_gnb">
-			<a href="index.html"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+			<a href="/"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-				<li><a href="#">호텔찾기</a></li>
-				<li><a href="reserve.html">예약</a></li>
+				<li><a href="/reservation/my_room?id=<%=id%>">예약확인</a></li>
+				<li><a href="/reservation/list?id=<%=id %>">예약</a></li>
 			</ul>
 		</nav>
 
 		<nav class="rb_gnb">
 			<ul>
-				<li><a href="#">호텔신라 소개</a></li>
-				<li><a href="#">고객문의</a></li>
-				<li><a href="#">신라리워즈</a></li>
+				<li><a href="#">신라호텔소개</a></li>
+				<li><a href="/review/list">이용후기</a></li>
 			</ul>
 		</nav>
 	</header>

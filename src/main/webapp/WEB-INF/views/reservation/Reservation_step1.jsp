@@ -45,16 +45,40 @@
 <!-- header 시작 -->
 <div class="header-wrap">
 	<header>
-		<div class="rt_gnb">
 		<% 
 		String id = request.getParameter("id");
+		
+		if(id == null) {
 		%>
-			<span><b><%=id %></b>님 &nbsp; |</span>
-	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
-	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
-		</div>
+		<div class="rt_gnb">
+			<span><a href="/member/login">로그인 &nbsp; |</a></span>
+			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
+			</div>
 		<div class="ct_gnb">
 			<a href="/"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+		</div>
+		<nav class="lb_gnb">
+			<ul>
+				<li><a href="/member/login">이용후기</a></li>
+				<li><a href="/member/login">예약</a></li>
+			</ul>
+		</nav>
+
+		<nav class="rb_gnb">
+			<ul>
+				<li><a href="/info_about">신라호텔소개</a></li>
+				<li><a href="/review/list">이용후기</a></li>
+			</ul>
+		</nav>
+		<% } else { %>
+		<div class="rt_gnb">
+	    	<span><b><%=id %></b>님 &nbsp; |</span>
+	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
+	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
+	         </div>
+	         
+		<div class="ct_gnb">
+			<a href="/?id=<%=id%>"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
@@ -65,10 +89,11 @@
 
 		<nav class="rb_gnb">
 			<ul>
-				<li><a href="#">신라호텔소개</a></li>
-				<li><a href="/review/list">이용후기</a></li>
+				<li><a href="/info_about?id=<%=id %>">신라호텔소개</a></li>
+				<li><a href="/review/list?id=<%=id %>">이용후기</a></li>
 			</ul>
 		</nav>
+	   <% } %>
 	</header>
 </div>
 <!-- header 끝 -->

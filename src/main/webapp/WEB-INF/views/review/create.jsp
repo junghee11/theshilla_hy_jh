@@ -38,7 +38,7 @@
 	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
 		</div>
 		<div class="ct_gnb">
-			<a href="/"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+			<a href="/?id=<%=id%>"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
@@ -49,8 +49,8 @@
 
 		<nav class="rb_gnb">
 			<ul>
-				<li><a href="#">신라호텔소개</a></li>
-				<li><a href="/review/list">이용후기</a></li>
+				<li><a href="/info_about?id=<%=id %>">신라호텔소개</a></li>
+				<li><a href="/review/list?id=<%=id %>">이용후기</a></li>
 			</ul>
 		</nav>
 	</header>

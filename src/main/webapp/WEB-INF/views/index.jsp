@@ -21,38 +21,24 @@
 <!-- header 시작 -->
 <div class="header-wrap">
 	<header>
-		<div class="rt_gnb">
+		
 		<% 
 // 		String id = (String)request.getAttribute("id");
 		String id = request.getParameter("id");
-		session.setAttribute("user", id);
 		
 		if(id == null) {
 		%>
+		<div class="rt_gnb">
 			<span><a href="/member/login">로그인 &nbsp; |</a></span>
 			<span><a href="/member/join">&nbsp;신라리워드가입 &nbsp; |</a></span>
-		<% } else { %>
-	    	<span><b><%=id %></b>님 &nbsp; |</span>
-	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
-	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
-	   <% } %>
-		</div>
+			</div>
 		<div class="ct_gnb">
-			<a href="/"><img src="resources/img/logo.gif" alt="신라호텔로고"></a>
+			<a href="/"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-			<% 
-			if(id == null) {
-			%>
-				
 				<li><a href="/member/login">이용후기</a></li>
 				<li><a href="/member/login">예약</a></li>
-			<% } else { %>
-				<li><a href="/reservation/my_room?id=<%=id%>">예약확인</a></li>
-				<li><a href="/reservation/list?id=<%=id %>">예약</a></li>
-			
-			<% } %>
 			</ul>
 		</nav>
 
@@ -62,6 +48,30 @@
 				<li><a href="/review/list">이용후기</a></li>
 			</ul>
 		</nav>
+		<% } else { %>
+		<div class="rt_gnb">
+	    	<span><b><%=id %></b>님 &nbsp; |</span>
+	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
+	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
+	         </div>
+	         
+		<div class="ct_gnb">
+			<a href="/?id=<%=id%>"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+		</div>
+		<nav class="lb_gnb">
+			<ul>
+				<li><a href="/reservation/my_room?id=<%=id%>">예약확인</a></li>
+				<li><a href="/reservation/list?id=<%=id %>">예약</a></li>
+			</ul>
+		</nav>
+
+		<nav class="rb_gnb">
+			<ul>
+				<li><a href="/info_about?id=<%=id %>">신라호텔소개</a></li>
+				<li><a href="/review/list?id=<%=id %>">이용후기</a></li>
+			</ul>
+		</nav>
+	   <% } %>
 	</header>
 </div>
 <!-- header 끝 -->

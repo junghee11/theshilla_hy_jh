@@ -19,9 +19,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/info_about")
-	public ModelAndView shillaInfo(@RequestParam ServletRequest session, ServletRequest httpServletRequest) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/about_shilla");
-		return mav;
+	public String shillaInfo() {
+		return "/about_shilla";
 	}
 }

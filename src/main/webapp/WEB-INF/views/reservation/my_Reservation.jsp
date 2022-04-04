@@ -85,7 +85,7 @@
 						<c:set var="pay_or_not" value="${list.payment }" />
 							<c:choose>
 							    <c:when test="${pay_or_not eq '결제완료'}">
-								    <form action="/review/create?id=<%=id%>" method="get">
+								    <form action="/review/create" method="get">
 									<input type="hidden" name="rsv_idx" value="${list.rsv_idx}">
 							    	<input type=submit value="리뷰쓰기">
 							    	</form>

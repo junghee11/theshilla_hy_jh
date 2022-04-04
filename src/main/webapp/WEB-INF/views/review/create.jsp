@@ -30,27 +30,26 @@
 	<header>
 		<div class="rt_gnb">
 		<% 
-// 		String id = (String)request.getAttribute("id");
 		String id = request.getParameter("id");
 		%>
-			<span><b><%=id %></b>님 &nbsp; |</span>
+			<span><b>${review.id }</b>님 &nbsp; |</span>
 	        <span><a href="/member/logout">&nbsp;로그아웃 &nbsp; |</a></span>   
-	         <span><a href="/member/update?id=<%=id %>">&nbsp;회원정보수정</a></span>
+	         <span><a href="/member/update?id=${review.id }">&nbsp;회원정보수정</a></span>
 		</div>
 		<div class="ct_gnb">
-			<a href="/?id=<%=id%>"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
+			<a href="/?id=${review.id }"><img src="../resources/img/logo.gif" alt="신라호텔로고"></a>
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-				<li><a href="/reservation/my_room?id=<%=id%>">예약확인</a></li>
-				<li><a href="/reservation/list?id=<%=id %>">예약</a></li>
+				<li><a href="/reservation/my_room?id=${review.id }">예약확인</a></li>
+				<li><a href="/reservation/list?id=${review.id }">예약</a></li>
 			</ul>
 		</nav>
 
 		<nav class="rb_gnb">
 			<ul>
-				<li><a href="/info_about?id=<%=id %>">신라호텔소개</a></li>
-				<li><a href="/review/list?id=<%=id %>">이용후기</a></li>
+				<li><a href="/info_about?id=${review.id }">신라호텔소개</a></li>
+				<li><a href="/review/list?id=${review.id }">이용후기</a></li>
 			</ul>
 		</nav>
 	</header>

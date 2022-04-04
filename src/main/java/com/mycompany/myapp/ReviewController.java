@@ -23,6 +23,7 @@ public class ReviewController {
 	public ModelAndView create(@RequestParam Map<String, Object> map) { //사실 이 메소드의 이름은 중요하지 않다. /create로 들어가면 이 메소드를 호출해기 때문.
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> info = this.reviewService.preInfo(map);
+		System.out.println(info);
 		mav.addObject("review", info);
 		mav.setViewName("/review/create");
 		return mav;

@@ -47,14 +47,15 @@ public class ReservationController {
 	@RequestMapping(value="/date_check", method=RequestMethod.GET)
 	public ModelAndView dateCheck(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(map);
 		List<Map<String, Object>> list = this.reservation.dateCheck(map);
-		
-		String mem_id = httpServletRequest.getParameter("mem_id");
+		String id = map.get("mem_id").toString();
+//		String mem_id = httpServletRequest.getParameter("id");
 		String date_in = httpServletRequest.getParameter("date_in");
 		String date_out = httpServletRequest.getParameter("date_out");
-		
+		System.out.println(id);
 		mav.addObject("data", list);
-		mav.addObject("id", mem_id);
+		mav.addObject("id", id);
 		mav.addObject("date_in", date_in);
 		mav.addObject("date_out", date_out);
 

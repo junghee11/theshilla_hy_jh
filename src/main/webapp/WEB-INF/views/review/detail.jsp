@@ -65,7 +65,7 @@
 			<input type="hidden" name="review_no" value="${review_no}"/>
 			<input type="submit" value="삭제"/>
 			</form>
-			<p><a href="/review/list" style="background-color: #525252; margin-top:6px; color:white; width:61.7%; text-align:center; font-size:14px; height:35px; line-height: 35px; display:block;">목록으로</a></p>
+			<p><a href="/review/list?id=${data.id }" style="background-color: #525252; margin-top:6px; color:white; width:61.7%; text-align:center; font-size:14px; height:35px; line-height: 35px; display:block;">목록으로</a></p>
 			</div>
 		</section>
 		<!-- content_wrap1 끝 -->

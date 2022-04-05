@@ -208,7 +208,7 @@
 //				api 기능 sucess시 수행하는것으로 설정
 			} else {
 				alert("해당 예약이 취소되었습니다.")
-				document.myForm.action="/reservation/cancelDeal";
+				document.myForm.action="/reservation/cancelDeal?id=${detail.id }";
 				document.myForm.submit();
 			}
 			

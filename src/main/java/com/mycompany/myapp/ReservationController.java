@@ -104,8 +104,10 @@ public class ReservationController {
 	}	
 	
 	@RequestMapping(value="cancelDeal", method = RequestMethod.GET)
-	public ModelAndView deleteRsv(@RequestParam Map<String, Object> map) {
+	public ModelAndView deleteRsv(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
 		ModelAndView mav = new ModelAndView();
+		String id = httpServletRequest.getParameter("id");
+		mav.addObject("id", id);
 		System.out.println(map);
 		boolean isDeleteSuccess = this.reservation.remove(map);
 		if(isDeleteSuccess) {
@@ -118,8 +120,10 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value="payOk", method = RequestMethod.GET)
-	public ModelAndView payOk(@RequestParam Map<String, Object> map) {
+	public ModelAndView payOk(@RequestParam Map<String, Object> map, HttpServletRequest httpServletRequest) {
 		ModelAndView mav = new ModelAndView();
+		String id = httpServletRequest.getParameter("id");
+		mav.addObject("id", id);
 		System.out.println(map);
 		boolean isUpdateSuccess = this.reservation.pay_update(map);
 		if(isUpdateSuccess) {

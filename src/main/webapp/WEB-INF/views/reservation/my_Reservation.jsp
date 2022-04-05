@@ -93,7 +93,7 @@
 							    </c:when>
 							    <c:otherwise>
 							    	<form action="/reservation/Reservation_step2" method="get">
-									<input type="hidden" name="Rsv_idx" value="${list.Rsv_idx}">
+									<input type="hidden" name="Rsv_idx" value="${list.rsv_idx}">
 							    	<input type=submit value="결제&취소">
 							    	</form>
 <!-- 							        <button type="button" onclick="mySubmit(1)">결제&취소</button> -->

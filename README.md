@@ -20,21 +20,21 @@
 
 <h3>🌿 Database</h3>
 <!-- <hr/> -->
-<img src="theshilla_hy_jh/WebContent/img/shilla_db.png" alt="DB">
+<img src="src/main/webapp/resources/images/shilla_db.png" alt="DB">
 <h3>🏆 Preview</h3>
 <!-- <hr/> -->
 
 <h4>로그인&r객실상세</h4>
-<img src="http://mp4-2-gif.com/dl.php?f=20220528131911-47d5d27a0a.gif" alt="login">
+<img src="src/main/webapp/resources/images/room_login.gif" alt="login">
 
 <h4>객실조회&예약확인</h4>
-<img src="theshilla_hy_jh/WebContent/img/shilla_db.png" alt="reservation">
+<img src="src/main/webapp/resources/images/reservation.gif" alt="reservation">
 
 <h4>결제&취소</h4>
-<img src="theshilla_hy_jh/WebContent/img/shilla_db.png" alt="payment">
+<img src="src/main/webapp/resources/images/payment.gif" alt="payment">
 
 <h4>이용후기</h4>
-<img src="theshilla_hy_jh/WebContent/img/shilla_db.png" alt="review">
+<img src="src/main/webapp/resources/images/room_review.gif" alt="review">
 
 <h3>🌱 Contributors</h3>
 <!-- <hr/> -->

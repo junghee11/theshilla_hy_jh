@@ -53,18 +53,19 @@
     </ul>
   <h4>Backend</h4>
     <ul>
-      <li>육희영 : 회원가입, 로그인</li>
+      <li>육희영 : 회원가입, 로그인, </li>
       <li>남정희 : 날짜별 객실조회, 예약&조회, 결제</li>
     </ul>
 
 <h3>🧤 Development enviroment</h3>
 <!-- <hr/> -->
   <ul>
+      <li>Spring framework</li>
       <li>JAVA 1.8</li>
-      <li>Spring3</li>
       <li>MyBatis</li>
-      <li></li>
-      <li>MySQL</li>
+      <li>ajax</li>
+      <li>javascript</li>
+      <li>MySQL, MariaDB</li>
       <li>Web Server Tomcat 8.5</li>
       <li>JSTL</li>
       <li>jQuery</li>

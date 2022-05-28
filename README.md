@@ -25,7 +25,7 @@
 <!-- <hr/> -->
 
 <h4>로그인&r객실상세</h4>
-<img src="theshilla_hy_jh/WebContent/img/shilla_db.png" alt="login">
+<img src="http://mp4-2-gif.com/dl.php?f=20220528131911-47d5d27a0a.gif" alt="login">
 
 <h4>객실조회&예약확인</h4>
 <img src="theshilla_hy_jh/WebContent/img/shilla_db.png" alt="reservation">

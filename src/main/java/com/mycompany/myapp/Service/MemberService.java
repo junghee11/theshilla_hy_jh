@@ -20,5 +20,9 @@ public interface MemberService {
 	List<Map<String, Object>> list(Map<String, Object> map);
 	//희영 추가 //동준 수정
 	boolean select_login(Map<String, Object> map);
+
+	Map<String, Object> findId(Map<String, Object> map);
+
+	Map<String, Object> findPw(Map<String, Object> map);
 	
 }

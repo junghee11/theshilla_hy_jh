@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN " "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
+
 	<insert id="insert" parameterType="hashMap"
 		useGeneratedKeys="true" keyProperty="id">
 	<![CDATA[
@@ -60,5 +61,32 @@
 		<![CDATA[
 			select count(*) from member where id=#{id} and pw=#{pw}
 		]]>
+	</select>
+	
+	<!-- findId -->
+	<select id="findId" parameterType="hashMap"
+		resultType="hashMap">
+	<![CDATA[
+	select id,pw,name,age,email,phone,address from member 
+	where email=#{keyword} and pw=#{keyword1}
+	]]>
+	<!-- <if test="keyword!=null">
+				and (email like CONCAT(#{keyword}) and pw like
+			CONCAT(#{keyword1}))
+		</if> -->
+	</select>
+	
+	
+		<!-- findPw -->
+	<select id="findPw" parameterType="hashMap"
+		resultType="hashMap">
+	<![CDATA[
+	select id,pw,name,age,email,phone,address from member 
+	where id=#{keyword} and email=#{keyword1}
+	]]>
+	<!-- <if test="keyword!=null">
+				and (id like CONCAT(#{keyword}) and email like
+			CONCAT(#{keyword1}))
+		</if> -->
 	</select>
 </mapper>

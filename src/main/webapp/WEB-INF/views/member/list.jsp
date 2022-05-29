@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>책 목록</title>
+<title>회원목록</title>
 </head>
 <body>
-	<h1>책 목록</h1>
+	<h1>회원목록</h1>
 	
 	<p>
 	<form> <!-- 아무것도 안 넣음. 어차피 자기 자신으로 그대로 올거니까. -->
@@ -28,6 +27,7 @@
 				<td>이름</td>
 				<td>나이</td>
 				<td>이메일</td>
+				<td>휴대폰번호</td>
 				<td>주소</td>
 			</tr>
 		</thead>
@@ -39,6 +39,7 @@
 					<td>${row.name}</td>
 					<td>${row.age}</td>
 					<td>${row.email}</td>
+					<td>${row.phone}</td>
 					<td>${row.address}</td>
 				</tr>
 			</c:forEach>

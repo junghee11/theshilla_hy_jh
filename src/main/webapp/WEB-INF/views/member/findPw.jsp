@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,15 +8,18 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>멤버십 가입</title>
+	<title>비밀번호 찾기</title>
 	<!-- 제이쿼리 라이브러리 외부CDN추가 -->
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- 구글 앱 폰트 적용 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../resources/css/reset.css?after">
 	<link rel="stylesheet" href="../resources/css/header.css?after">
-	<link rel="stylesheet" href="../resources/css/join.css?after">
+	<link rel="stylesheet" href="../resources/css/findPw.css?after">
 	<link rel="stylesheet" href="../resources/css/footer.css?after">
-	<link rel="stylesheet" href="../resources/js/join.js">
-	<script src="../resources/js/join.js"></script>
 </head>
 
 <body>
@@ -80,27 +82,40 @@
 <!-- header 끝 -->
 	<main>
 		<section class="content_wrap1">
-				<h1>이용후기</h1>
+			<h1>비밀번호 찾기</h1>
 			<hr style="border: 2px solid #856f56; ">
 			<div class="log1">
-				<form method="POST" id="join_form">
+			<form>
 				<label for="id">ID</label>
-				<input type="text" name="id" placeholder="id" id="id"  minlength="6" maxlength="12"> <br>
-				<label for="pw">PASSWORD</label>
-				<input type="password" name="pw" placeholder="pw" id="pw" minlength="6" maxlength="12">
-				<label for="name">NAME</label>
-				<input type="text" name="name" placeholder="name" id="name">
-				<label for="age">AGE</label>
-				<input type="number" name="age" placeholder="age" id="age">
+				<input type="text" placeholder="id" name="keyword" value="${keyword}"> <br>
 				<label for="email">EMAIL</label>
-				<input type="email" name="email" placeholder="email" id="email">
-				<label for="phone">PHONE</label>
-				<input type="tel" name="phone" placeholder="phone" id="phone">
-				<label for="address">ADDRESS</label>
-				<input type="text" name="address" placeholder="address" id="address">
-				<label for="log_btn" style="opacity:0;">회원가입</label>
-				<input type="submit" value="회원가입" id="join_btn">
-				</form>
+				<input type="email" placeholder="email" name="keyword1" value="${keyword1}">
+				<label for="log_btn" style="opacity:0;">ID</label>
+				<input type="submit" value="비밀번호찾기"> <br>
+			</form>
+				<table>
+				<thead>
+				</thead>
+					<tbody>
+						<!-- data라는 키는 list를 가지고 있고, row는 이 리스트 안에 있는 값들 하나 하나 이다. -->
+						<c:forEach var="row" items="${data}">
+							<tr>
+							<td><label for="fndPw_btn">조회된 PW</label></td>
+								<td style="padding-left: 10px;
+    								vertical-align: middle;
+   									text-align: center;
+    								width: 300px;">${row.pw}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+
+				<div class="btn_all">
+				<label for="log_btn" style="opacity:0;">ID</label>
+				<a href="/member/join"><img src="../resources/img/loginBtnJoin.gif" alt="회원가입버튼"></a>
+				<a href="/member/login"><img src="../resources/img/popFindIdBtnLogin.gif" alt="로그인버튼"></a>
+				<a href="/member/findId"><img src="../resources/img/loginBtnLostId.gif" alt="아이디찾기버튼"></a>
+				</div>
 			</div>
 		</section>
 		<!-- content_wrap1 끝 -->

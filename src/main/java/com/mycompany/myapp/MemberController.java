@@ -158,5 +158,55 @@ public class MemberController {
 	        ModelAndView mv = new ModelAndView("redirect:/");
 	        return mv;
 	    }
+	   
+	 //showId
+ 		@RequestMapping(value = "/findId")
+ 		public ModelAndView showId(@RequestParam Map<String, Object> map) {
+ 			ModelAndView mav = new ModelAndView();
+
+
+ 			if (map.containsKey("keyword")) {
+ 				mav.addObject("keyword", map.get("keyword"));
+ 				System.out.println("findId");
+ 				System.out.println(map);
+ 				Map<String, Object> findId = this.memberService.findId(map);
+ 				mav.addObject("data", findId);
+ 			}
+ 			if (map.containsKey("keyword1")) {
+ 				mav.addObject("keyword1", map.get("keyword1"));
+ 				System.out.println("findId");
+ 				System.out.println(map);
+ 				Map<String, Object> findId = this.memberService.findId(map);
+ 				mav.addObject("data", findId);
+ 			}
+
+ 			mav.setViewName("/member/findId");
+ 			return mav;
+ 		}
+	 		
+ 		//findPw
+ 		@RequestMapping(value = "/findPw")
+ 		public ModelAndView findPw(@RequestParam Map<String, Object> map) {
+ 			ModelAndView mav = new ModelAndView();
+
+
+ 			if (map.containsKey("keyword")) {
+ 				mav.addObject("keyword", map.get("keyword"));
+ 				System.out.println("findPw");
+ 				System.out.println(map);
+ 				Map<String, Object> findPw = this.memberService.findPw(map);
+ 				mav.addObject("data", findPw);
+ 			}
+ 			if (map.containsKey("keyword1")) {
+ 				mav.addObject("keyword1", map.get("keyword1"));
+ 				System.out.println("findPw");
+ 				System.out.println(map);
+ 				Map<String, Object> findPw = this.memberService.findPw(map);
+ 				mav.addObject("data", findPw);
+ 			}
+
+ 			mav.setViewName("/member/findPw");
+ 			return mav;
+ 		}
 
 }

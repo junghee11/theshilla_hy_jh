@@ -63,5 +63,16 @@ public class MemberServiceImpl implements MemberService {
 		return affectRowCount==1; //update 성공시 true, 실패하면 false를 리턴하는 코드
 	} */
 
+	//findId
+	@Override
+	public Map<String,Object> findId(Map<String, Object> map) {
+		return this.memberDao.findId(map);
+	}
+	
+	//findPw
+	@Override
+	public Map<String,Object> findPw(Map<String, Object> map) {
+		return this.memberDao.findPw(map);
+	}
 
 }

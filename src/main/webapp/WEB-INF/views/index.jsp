@@ -37,7 +37,7 @@
 		</div>
 		<nav class="lb_gnb">
 			<ul>
-				<li><a href="/member/login">이용후기</a></li>
+				<li><a href="/member/login">예약확인</a></li>
 				<li><a href="/member/login">예약</a></li>
 			</ul>
 		</nav>

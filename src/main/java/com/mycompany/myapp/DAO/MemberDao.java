@@ -52,6 +52,16 @@ public class MemberDao {
 		return this.sqlSessionTemplate.selectOne("member.select_login", map);
 	}
 	
+	//findId
+	public Map<String, Object> findId(Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectOne("member.findId", map);
+	}
+	
+	//findPw
+	public Map<String, Object> findPw(Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectOne("member.findPw", map);
+	}
+	
 
 
 }

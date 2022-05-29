@@ -19,10 +19,13 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="contentType"
+			value="text/html; charset=UTF-8" />
 	</beans:bean>
 	
 	<context:component-scan base-package="com.mycompany.myapp" />
 	
-	
-	
+	<!-- 추가했는데 잘모르는 부분 -->
+	<!-- <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	</beans:bean> -->
 </beans:beans>

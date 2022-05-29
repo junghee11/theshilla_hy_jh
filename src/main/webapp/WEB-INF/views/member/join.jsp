@@ -14,7 +14,7 @@
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="../resources/css/reset.css?after">
 	<link rel="stylesheet" href="../resources/css/header.css?after">
-	<link rel="stylesheet" href="../resources/css/join.css?after">
+	<link rel="stylesheet" href="../resources/css/join.css?ver=1.1">
 	<link rel="stylesheet" href="../resources/css/footer.css?after">
 	<link rel="stylesheet" href="../resources/js/join.js">
 	<script src="../resources/js/join.js"></script>
@@ -80,7 +80,7 @@
 <!-- header 끝 -->
 	<main>
 		<section class="content_wrap1">
-				<h1>이용후기</h1>
+				<h1>신라리워드 가입</h1>
 			<hr style="border: 2px solid #856f56; ">
 			<div class="log1">
 				<form method="POST" id="join_form">

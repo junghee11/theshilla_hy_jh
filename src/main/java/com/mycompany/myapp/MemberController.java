@@ -178,6 +178,8 @@ public class MemberController {
  				System.out.println(map);
  				Map<String, Object> findId = this.memberService.findId(map);
  				mav.addObject("data", findId);
+ 				mav.setViewName("/member/detail");
+ 	 			return mav;
  			}
 
  			mav.setViewName("/member/findId");
@@ -203,6 +205,8 @@ public class MemberController {
  				System.out.println(map);
  				Map<String, Object> findPw = this.memberService.findPw(map);
  				mav.addObject("data", findPw);
+ 				mav.setViewName("/member/detail");
+ 	 			return mav;
  			}
 
  			mav.setViewName("/member/findPw");
